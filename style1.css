@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabel Piña - Creative Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Dark Blue-Gray Background */
+            color: #F3F4F6; /* Light Gray Text */
+        }
+        .hero-bg {
+            background-color: #111827;
+        }
+        .accent-color {
+            color: #38bdf8; /* Sky Blue */
+        }
+        .accent-bg {
+            background-color: #38bdf8;
+        }
+        .accent-bg-hover:hover {
+            background-color: #0ea5e9;
+        }
+        .secondary-bg {
+            background-color: #1F2937; /* Medium Gray */
+        }
+        .card-bg {
+             background-color: #374151; /* Lighter Gray */
+        }
+        .portfolio-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
+        }
+        .filter-btn.active {
+            background-color: #38bdf8;
+            color: #111827;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-gray-900 bg-opacity-80 backdrop-blur-md">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold tracking-tight text-white">Isabel Piña</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-sky-400 transition">About</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-sky-400 transition">Portfolio</a>
+                <a href="#skills" class="text-gray-300 hover:text-sky-400 transition">Skills</a>
+                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-sky-400">About</a>
+            <a href="#portfolio" class="block py-2 text-gray-300 hover:text-sky-400">Portfolio</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-sky-400">Skills</a>
+            <a href="#contact" class="block py-2 text-gray-300 hover:text-sky-400">Contact</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg min-h-screen flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
+                    Mission-Driven Marketing &<br> <span class="accent-color">Digital Content Creator</span>
+                </h1>
+                <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
+                    A creative marketing student passionate about using design and digital media to support Catholic evangelization and bring faith-filled missions to life.
+                </p>
+                <div class="mt-10">
+                    <a href="#portfolio" class="accent-bg text-gray-900 font-bold py-3 px-8 rounded-full text-lg accent-bg-hover transition-all duration-300 shadow-lg shadow-sky-500/20">
+                        View My Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 md:py-32 secondary-bg">
+            <div class="container mx-auto px-6">
+                <div class="lg:flex items-center">
+                    <div class="lg:w-1/2">
+                        <img src="https://placehold.co/600x600/1F2937/FFFFFF?text=Isabel+Pi%C3%B1a" alt="Portrait of Isabel Piña" class="rounded-full shadow-2xl mx-auto lg:mx-0 w-64 h-64 md:w-80 md:h-80 object-cover">
+                    </div>
+                    <div class="lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
+                        <p class="text-gray-300 mb-4">
+                           Hello! I'm Isabel, a marketing student at Wright State University. I'm deeply passionate about my Catholic faith and see beauty as a powerful means of evangelization. My goal is to use my skills in digital marketing and content creation to serve mission-driven organizations.
+                        </p>
+                        <p class="text-gray-300 mb-6">
+                           I thrive in collaborative, fast-paced environments where I can bring ideas to life. I believe that strategic, beautiful, and thoughtful content can connect with audiences on a deeper level. I'm organized, detail-oriented, and excited by the opportunity to help a mission grow through creative and impactful marketing.
+                        </p>
+                        <a href="#contact" class="border-2 border-sky-400 text-sky-400 font-bold py-3 px-6 rounded-full hover:bg-sky-400 hover:text-gray-900 transition-all duration-300">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Portfolio</h2>
+                    <p class="text-gray-400 mt-2">A selection of my relevant design and marketing work.</p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="flex justify-center space-x-2 md:space-x-4 mb-12">
+                    <button class="filter-btn active px-4 py-2 rounded-full transition" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="design">Product Design</button>
+                    <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="branding">Branding</button>
+                    <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="marketing">Marketing</button>
+                </div>
+
+                <!-- Portfolio Grid -->
+                <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1: Pro-Life Shirt -->
+                    <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="design">
+                        <img src="My project-4.jpg" alt="Pro-Life T-Shirt Design" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Pro-Life Apparel Design</h3>
+                            <p class="text-sm text-sky-300 mt-1">Product Design</p>
+                            <p class="text-gray-300 mt-4">Designed mission-aligned apparel with a clear pro-life message, suitable for e-commerce and brand promotion.</p>
+                        </div>
+                    </div>
+                    <!-- Project 2: Image of God Shirt -->
+                    <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="design">
+                        <img src="My project-3.jpg" alt="Made in the Image of God T-Shirt Design" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Faith-Based Product Design</h3>
+                            <p class="text-sm text-sky-300 mt-1">Product Design</p>
+                            <p class="text-gray-300 mt-4">Created scripture-inspired t-shirt designs that communicate core Christian beliefs for a modern audience.</p>
+                        </div>
+                    </div>
+                    <!-- Project 3: Roses & Lillies Logo -->
+                    <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
+                        <img src="Logo RL-1.png" alt="Roses & Lillies Apparel Logo" class="w-full h-auto object-cover bg-white p-4">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Elegant Brand Identity</h3>
+                             <p class="text-sm text-pink-300 mt-1">Branding & Logo Design</p>
+                            <p class="text-gray-300 mt-4">Developed a sophisticated logo using Adobe Illustrator, incorporating floral imagery with Marian symbolism to create beauty.</p>
+                        </div>
+                    </div>
+                    <!-- Project 4: Spirit Days -->
+                    <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="marketing">
+                        <img src="Spirit Days.jpg" alt="Spirit Days flyer with a Dress Like a Saint Day" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Liturgical Event Promotion</h3>
+                            <p class="text-sm text-purple-300 mt-1">Marketing & Graphic Design</p>
+                            <p class="text-gray-300 mt-4">Designed engaging promotional materials for school events, incorporating faith-based themes like "Dress Like a Saint Day" to foster community.</p>
+                        </div>
+                    </div>
+                    <!-- Project 5: Diaper Drive -->
+                    <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="marketing">
+                        <img src="blue playful toy drive flyer.jpg" alt="Diaper Drive flyer for Elizabeth New Life Center" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Mission-Driven Campaign Flyer</h3>
+                            <p class="text-sm text-purple-300 mt-1">Marketing & Design</p>
+                            <p class="text-gray-300 mt-4">Created a clear and compelling flyer for a diaper drive supporting the Elizabeth New Life Center, aligning design with a pro-life mission.</p>
+                        </div>
+                    </div>
+                    <!-- Project 6: Fall Fest -->
+                    <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
+                        <img src="My project (2).jpg" alt="Fall Fest flyer for Immaculate Heart Co-op" class="w-full h-auto object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white">Catholic Community Event Branding</h3>
+                            <p class="text-sm text-pink-300 mt-1">Branding & Graphic Design</p>
+                            <p class="text-gray-300 mt-4">Developed on-brand graphics for the "Immaculate Heart Co-op" Fall Fest, demonstrating experience with Catholic organizational branding.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 secondary-bg">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Skills & Values</h2>
+                    <p class="text-gray-400 mt-2">The tools and abilities I use to bring ideas to life.</p>
+                </div>
+                <div class="max-w-5xl mx-auto">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+                        <div class="card-bg p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-white">Content & Design</h3>
+                            <p class="text-gray-300 mt-2">Canva<br>Adobe Spark<br>Adobe Photoshop<br>Flyer Design</p>
+                        </div>
+                        <div class="card-bg p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-white">Digital Marketing</h3>
+                            <p class="text-gray-300 mt-2">Social Media<br>Cvent Event Mgmt<br>SurveyMonkey/Qualtrics<br>Website & Email Writing</p>
+                        </div>
+                        <div class="card-bg p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-white">Professional</h3>
+                            <p class="text-gray-300 mt-2">Project Coordination<br>Team Collaboration<br>Written Communication<br>Creative Problem Solving</p>
+                        </div>
+                         <div class="card-bg p-6 rounded-lg">
+                            <h3 class="text-xl font-bold text-white">Values</h3>
+                            <p class="text-gray-300 mt-2">Passionate Catholic<br>Mission-Driven<br>Beauty as Evangelization<br>Servant Leadership</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 bg-gray-900">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Let's Connect</h2>
+                <p class="text-gray-400 mt-4 max-w-xl mx-auto">Have a project in mind or just want to say hello? I'd love to hear from you.
+                </p>
+                <div class="mt-8">
+                    <a href="mailto:pina.6@wright.edu" class="accent-bg text-gray-900 font-bold py-4 px-8 rounded-full text-lg accent-bg-hover transition-all duration-300 shadow-lg shadow-sky-500/20">
+                        pina.6@wright.edu
+                    </a>
+                </div>
+                <div class="flex justify-center space-x-6 mt-10">
+                    <a href="#" class="text-gray-400 hover:text-sky-400 transition" aria-label="GitHub">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.286 2.55 7.93 6.138 9.49.448.082.612-.194.612-.43v-1.524c-2.47.535-3-.99-3.224-1.484-.132-.33-.666-.83-1.11-1-.37-.143-.908-.693-.01-.703.85-.01 1.46.817 1.67 1.16.96 1.643 2.51 1.17 3.12.894.1-.695.37-1.17.67-1.44-2.38-.27-4.88-1.18-4.88-5.28 0-1.16.41-2.11 1.1-2.85-.11-.27-.48-1.35.1-2.81 0 0 .9-.29 2.95 1.1.85-.24 1.76-.36 2.67-.36s1.82.12 2.67.36c2.05-1.39 2.95-1.1 2.95-1.1.58 1.46.21 2.54.1 2.81.69.74 1.1 1.69 1.1 2.85 0 4.11-2.5 5.01-4.89 5.27.38.33.72.97.72 1.95v2.92c0 .24.16.52.61.43C19.45 19.93 22 16.286 22 12c0-5.523-4.477-10-10-10Z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-sky-400 transition" aria-label="Twitter">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-sky-400 transition" aria-label="LinkedIn">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V9h2v7zm-2-8v-2h2v2H9zm6 8h-2v-3.5c0-.84-.02-1.92-.5-2.5-1.02-.9-1.5-1.5-2.5-1.5s-1.48.6-2.5 1.5c-.5.6-.5 1.66-.5 2.5V16H5V9h2v1.25C7.88 9.5 8.94 9 10 9c2.21 0 3 1.46 3 3.25V16z" clip-rule="evenodd" /></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2024 Isabel Piña. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Portfolio Filtering
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active button state
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
