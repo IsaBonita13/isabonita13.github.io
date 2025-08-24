@@ -389,67 +389,71 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
 
-            // Portfolio Filtering
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const portfolioGrid = document.getElementById('portfolio-grid'); // Get the grid
-            const portfolioItems = Array.from(portfolioGrid.children); // Get children
+        // --- CORRECTED PORTFOLIO FILTERING ---
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('#portfolio-grid > div'); // Select direct children of the grid
 
-            filterButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    if (e.target.tagName === 'BUTTON') {
-                         e.preventDefault();
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Set the active button style
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.dataset.filter;
+
+                // Toggle the 'hidden' class based on the filter
+                portfolioItems.forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.classList.remove('hidden'); // Show the item
+                    } else {
+                        item.classList.add('hidden'); // Hide the item
                     }
-                   
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    button.classList.add('active');
-
-                    const filter = button.dataset.filter;
-
-                    portfolioItems.forEach(item => {
-                        if (filter === 'all' || item.dataset.category === filter) {
-                            item.style.display = '';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
                 });
             });
+        });
+        
+        // --- MODAL LOGIC (No changes needed here, but included for completeness) ---
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        
+        const imagePortfolioItems = document.querySelectorAll('.portfolio-item-image');
 
-            // Modal Logic
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("img01");
-            
-            portfolioItems.forEach(item => {
-                // Check if the item is NOT a video link
-                if (item.tagName.toLowerCase() !== 'a') {
-                    item.addEventListener('click', function() {
-                        const img = this.querySelector('img');
-                        if (img) {
-                            modal.style.display = "block";
-                            modalImg.src = img.src;
-                        }
-                    });
+        imagePortfolioItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                if (img) {
+                    modal.style.display = "block";
+                    modalImg.src = img.src;
                 }
             });
+        });
 
-            var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("close")[0];
 
-            span.onclick = function() { 
+        span.onclick = function() { 
+            modal.style.display = "none";
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
                 modal.style.display = "none";
             }
-        });
-    </script>
+        }
+    });
+</script>
 
 </body>
 </html>
+
 
 
 
