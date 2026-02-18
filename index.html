@@ -3,473 +3,650 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Isabel Piña - Marketing Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Isabel Piña | Creative Portfolio</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Mulish', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'slate-50': '#f8fafc',
+                        'slate-100': '#f1f5f9',
+                        'navy-800': '#1e3a8a', /* Classic Navy */
+                        'navy-900': '#0f172a', /* Deep Midnight Blue */
+                        'accent': '#d4a373', /* Soft Gold/Beige Accent - pairs well with Navy */
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Alpine.js for Interactions -->
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #111827; /* Dark Blue-Gray Background */
-            color: #F3F4F6; /* Light Gray Text */
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
-        .hero-bg {
-            background-color: #111827;
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
         }
-        .accent-color {
-            color: #38bdf8; /* Sky Blue */
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
         }
-        .accent-bg {
-            background-color: #38bdf8;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
-        .accent-bg-hover:hover {
-            background-color: #0ea5e9;
+        
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.5s ease;
         }
-        .secondary-bg {
-            background-color: #1F2937; /* Medium Gray */
-        }
-        .card-bg {
-             background-color: #374151; /* Lighter Gray */
-        }
-        .portfolio-item {
-             transition: transform 0.3s ease, box-shadow 0.3s ease;
-             cursor: pointer;
-        }
-        .portfolio-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.2), 0 8px 10px -6px rgb(0 0 0 / 0.2);
-        }
-        .filter-btn.active {
-            background-color: #38bdf8;
-            color: #111827;
-            font-weight: 700;
-        }
-        .filter-btn {
-            background-color: #374151;
-            color: #F3F4F6;
-        }
-        /* Modal Styles */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
-            padding-top: 60px;
-        }
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-        }
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
+        .fade-enter-from, .fade-leave-to {
+            opacity: 0;
         }
     </style>
 </head>
-<body class="antialiased">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-navy-900 selection:text-white">
 
-    <header class="fixed w-full top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold tracking-tight text-white">Isabel Piña</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="text-gray-300 hover:text-sky-400 transition">About</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-sky-400 transition">Portfolio</a>
-                <a href="#skills" class="text-gray-300 hover:text-sky-400 transition">Skills</a>
-                <a href="#contact" class="text-gray-300 hover:text-sky-400 transition">Contact</a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-            </button>
+    <!-- Navigation -->
+    <nav x-data="{ mobileMenuOpen: false, scrolled: false }" 
+         @scroll.window="scrolled = (window.pageYOffset > 20) ? true : false"
+         :class="{ 'bg-white/90 backdrop-blur-md shadow-sm': scrolled, 'bg-transparent': !scrolled }"
+         class="fixed w-full z-50 transition-all duration-300 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="font-serif text-2xl font-semibold tracking-wide text-navy-900">
+                        Isabel Piña<span class="text-accent">.</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-navy-900 transition-colors">About</a>
+                    <a href="#portfolio" class="text-sm font-medium text-slate-600 hover:text-navy-900 transition-colors">Portfolio</a>
+                    <a href="#resume" class="text-sm font-medium text-slate-600 hover:text-navy-900 transition-colors">Resume</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-navy-900 transition-colors">Skills</a>
+                    <a href="#contact" class="px-5 py-2.5 bg-navy-900 text-white text-sm font-medium rounded-full hover:bg-navy-800 transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Let's Talk</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-navy-900 hover:text-navy-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-gray-300 hover:text-sky-400">About</a>
-            <a href="#portfolio" class="block py-2 text-gray-300 hover:text-sky-400">Portfolio</a>
-            <a href="#skills" class="block py-2 text-gray-300 hover:text-sky-400">Skills</a>
-            <a href="#contact" class="block py-2 text-gray-300 hover:text-sky-400">Contact</a>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-2"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             class="md:hidden bg-white shadow-lg absolute w-full top-20 left-0 border-t border-slate-100">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="#about" @click="mobileMenuOpen = false" class="block px-3 py-2 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">About</a>
+                <a href="#portfolio" @click="mobileMenuOpen = false" class="block px-3 py-2 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">Portfolio</a>
+                <a href="#resume" @click="mobileMenuOpen = false" class="block px-3 py-2 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">Resume</a>
+                <a href="#skills" @click="mobileMenuOpen = false" class="block px-3 py-2 text-base font-medium text-slate-600 hover:bg-slate-50 rounded-md">Skills</a>
+                <a href="#contact" @click="mobileMenuOpen = false" class="block px-3 py-2 text-base font-medium text-accent">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-16 md:pt-48 md:pb-32 overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-navy-900/5 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 bg-accent/10 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 space-y-6">
+                    <span class="inline-block py-1 px-3 rounded-full bg-slate-200 text-navy-900 text-xs font-semibold uppercase tracking-wider">Based in Ohio</span>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight text-navy-900">
+                        Thoughtful Marketing & <br><span class="text-slate-400 italic">Creative Design</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-slate-600 max-w-lg leading-relaxed">
+                        Building brands through engaging social media, memorable events, and strategic storytelling.
+                    </p>
+                    <div class="pt-4 flex gap-4">
+                        <a href="#portfolio" class="px-8 py-3 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-all hover:scale-105 shadow-lg">View My Work</a>
+                        <a href="#contact" class="px-8 py-3 bg-white border border-slate-200 text-navy-900 rounded-full font-medium hover:bg-slate-50 transition-all hover:border-slate-400">Contact Me</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <div class="relative z-10 rounded-2xl overflow-hidden shadow-2xl aspect-[4/5] md:aspect-square lg:aspect-[4/3] max-w-md mx-auto ring-1 ring-slate-900/5">
+                        <img src="https://isabonita13.github.io/IMG_20230917_165102.jpg" alt="Isabel Piña" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <!-- Decorative elements -->
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-dots opacity-20 hidden md:block"></div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <main>
-        <section id="home" class="hero-bg min-h-screen flex items-center">
-            <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-tight">
-                    Thoughtful Marketing &<br> <span class="accent-color">Creative Design</span>
-                </h1>
-                <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-3xl mx-auto">
-                    A creative professional with a passion for building brands through thoughtful content, engaging social media, and memorable events.
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-8 text-navy-900">Hi, I'm Isabel</h2>
+            <div class="prose prose-lg mx-auto text-slate-600">
+                <p class="mb-6">
+                    I'm a motivated and creative marketing professional with a passion for bringing ideas to life. I love connecting with diverse audiences through clear, thoughtful communication.
                 </p>
-                <div class="mt-10">
-                    <a href="#portfolio" class="accent-bg text-gray-900 font-bold py-3 px-8 rounded-full text-lg accent-bg-hover transition-all duration-300 shadow-lg shadow-sky-500/20">
-                        See My Work
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="py-20 md:py-32 secondary-bg">
-            <div class="container mx-auto px-6">
-                <div class="lg:flex items-center">
-                    <div class="lg:w-1/2">
-                        <img src="IMG_20230917_165102.jpg" alt="Portrait of Isabel Piña" class="rounded-full shadow-2xl mx-auto lg:mx-0 w-64 h-64 md:w-80 md:h-80 object-cover">
-                    </div>
-                    <div class="lg:w-1/2 mt-10 lg:mt-0 lg:pl-16">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Hi, I'm Isabel!</h2>
-                        <p class="text-gray-300 mb-4">
-                           I'm a motivated and creative marketing professional with a passion for bringing ideas to life. I love connecting with diverse audiences through clear, thoughtful communication, and I have hands-on experience in event planning, social media, and team collaboration.
-                        </p>
-                        <p class="text-gray-300 mb-6">
-                           My approach is built on energy, curiosity, and a people-first mindset. I thrive in fast-paced environments where I can adapt to new challenges and collaborate with a team to see a project through from concept to completion. I'm excited by the opportunity to apply my strong work ethic and creative skills to help produce outstanding results.
-                        </p>
-                        <a href="#contact" class="border-2 border-sky-400 text-sky-400 font-bold py-3 px-6 rounded-full hover:bg-sky-400 hover:text-gray-900 transition-all duration-300">
-                            Let's Chat
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" class="py-20 md:py-32 bg-gray-900">
-          <div class="container mx-auto px-6">
-            <div class="text-center mb-12">
-              <h2 class="text-3xl md:text-4xl font-bold text-white">My Work</h2>
-              <p class="text-gray-400 mt-2">Here's a look at some of the projects I've enjoyed working on.</p>
-            </div>
-            <div class="flex justify-center flex-wrap gap-2 md:gap-4 mb-12">
-              <button class="filter-btn active px-4 py-2 rounded-full transition" data-filter="all">All</button>
-              <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="branding">Branding</button>
-              <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="marketing">Marketing</button>
-              <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="events">Events</button>
-              <button class="filter-btn px-4 py-2 rounded-full transition" data-filter="video">Video</button>
-            </div>
-            <div id="portfolio-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <a href="https://www.instagram.com/p/DPEhl8dEda3/" target="_blank" rel="noopener noreferrer" class="portfolio-item rounded-lg overflow-hidden card-bg block hover:opacity-90 transition-opacity" data-category="video">
-                <div class="w-full h-auto relative bg-gray-900">
-                  <img src="Popmartnyfw.PNG" alt="Pop Mart NWFW Reel Thumbnail" class="w-full h-auto object-cover">
-                  <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="bg-black/50 rounded-full p-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Pop Mart NWFW Reel</h3>
-                  <p class="text-sm text-sky-300 mt-1">Video Editing</p>
-                  <p class="text-gray-300 mt-4">A fast-paced compilation reel featuring influencers styling Pop Mart collectibles at NYFW.</p>
-                </div>
-              </a>
-
-              <a href="https://www.instagram.com/p/DQfKklTErJK/" target="_blank" rel="noopener noreferrer" class="portfolio-item rounded-lg overflow-hidden card-bg block hover:opacity-90 transition-opacity" data-category="video">
-                <div class="w-full h-auto relative bg-gray-900">
-                  <img src="halloweenwithpopmart.PNG" alt="Instagram Reel Thumbnail" class="w-full h-auto object-cover">
-                  <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="bg-black/50 rounded-full p-3">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Pop Mart Halloween Reel</h3>
-                  <p class="text-sm text-sky-300 mt-1">Video Editing</p>
-                  <p class="text-gray-300 mt-4">A seasonal highlight reel showcasing influencers and Pop Mart Halloween series.</p>
-                </div>
-              </a>
-
-              <a href="https://www.youtube.com/watch?v=KRivALXkydI" target="_blank" rel="noopener noreferrer" class="portfolio-item rounded-lg overflow-hidden card-bg block" data-category="video">
-                <div class="w-full h-56 relative pointer-events-none">
-                  <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/KRivALXkydI?controls=0" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Volleyball Highlight Reel</h3>
-                  <p class="text-sm text-sky-300 mt-1">Video Editing</p>
-                  <p class="text-gray-300 mt-4">A high-energy Instagram reel focused on dynamic volleyball moments and exciting edits.</p>
-                </div>
-              </a>
-
-              <a href="https://www.youtube.com/watch?v=17TRmTwcQJo" target="_blank" rel="noopener noreferrer" class="portfolio-item rounded-lg overflow-hidden card-bg block" data-category="video">
-                <div class="w-full h-56 relative pointer-events-none">
-                  <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/17TRmTwcQJo?controls=0" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Basketball Season Highlight Video</h3>
-                  <p class="text-sm text-sky-300 mt-1">Video Editing</p>
-                  <p class="text-gray-300 mt-4">Dynamic highlight reel for varsity basketball team's season with fast-paced editing.</p>
-                </div>
-              </a>
-
-              <a href="https://www.youtube.com/watch?v=w3PYev-xeLU" target="_blank" rel="noopener noreferrer" class="portfolio-item rounded-lg overflow-hidden card-bg block" data-category="video">
-                <div class="w-full h-56 relative pointer-events-none">
-                  <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/w3PYev-xeLU" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Graduation Highlight Video</h3>
-                  <p class="text-sm text-sky-300 mt-1">Video Editing</p>
-                  <p class="text-gray-300 mt-4">Commemorative slideshow for a graduation party, weaving together photos and videos.</p>
-                </div>
-              </a>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
-                <img src="Logo RL-1.png" alt="Roses & Lillies Apparel Logo" class="w-full h-auto object-contain bg-white p-4">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Brand Identity Concept</h3>
-                  <p class="text-sm text-sky-300 mt-1">Logo Design</p>
-                  <p class="text-gray-300 mt-4">Sophisticated logo concept for a new apparel brand, elegant identity for the fashion market.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
-                <img src="My project-3.png" alt="Made in the Image of God T-Shirt Design" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Apparel Graphic Concepts</h3>
-                  <p class="text-sm text-sky-300 mt-1">Product Design</p>
-                  <p class="text-gray-300 mt-4">Modern, typography-focused graphics for a t-shirt line, focused on marketable apparel.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
-                <img src="Untitled.png" alt="Cozy Cottage Clothing Logo" class="w-full h-auto object-contain p-4">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Playful Brand Concept</h3>
-                  <p class="text-sm text-sky-300 mt-1">Logo Design</p>
-                  <p class="text-gray-300 mt-4">Whimsical logo for clothing brand, versatile design for a younger audience.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
-                <img src="22W7_F25.png" alt="Isa Bonita Logo" class="w-full h-auto object-contain p-4">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Vibrant Personal Branding</h3>
-                  <p class="text-sm text-sky-300 mt-1">Logo Design</p>
-                  <p class="text-gray-300 mt-4">Bright, neon-style logo for personal branding; modern and eye-catching visual identity.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="branding">
-                <img src="My project-4.png" alt="Pro-Life T-Shirt Design" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Consumer Apparel Graphic</h3>
-                  <p class="text-sm text-sky-300 mt-1">Product Design</p>
-                  <p class="text-gray-300 mt-4">Minimalist line-art graphic for a consumer t-shirt line, clean aesthetic for a niche market.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="marketing">
-                <img src="Senior Grad instagram story.png" alt="Senior Night Instagram Story" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Social Media Campaign Graphic</h3>
-                  <p class="text-sm text-purple-300 mt-1">Social Media Marketing</p>
-                  <p class="text-gray-300 mt-4">Compelling Instagram Story graphic for promoting a community event.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="marketing">
-                <img src="blue playful toy drive flyer.png" alt="Diaper Drive flyer for Elizabeth New Life Center" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Non-Profit Campaign Flyer</h3>
-                  <p class="text-sm text-purple-300 mt-1">Marketing & Design</p>
-                  <p class="text-gray-300 mt-4">Clear, effective flyer for a community drive, with strong call-to-action.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="marketing">
-                <img src="B51a_I58-2.png" alt="Psychology Textbook Cover" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Book Cover Design</h3>
-                  <p class="text-sm text-purple-300 mt-1">Graphic Design</p>
-                  <p class="text-gray-300 mt-4">Professional academic cover for textbook, versatile for various media formats.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="marketing">
-                <img src="ig story-1.png" alt="Soccer Senior Night Instagram Story" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Athletic Event IG Story</h3>
-                  <p class="text-sm text-purple-300 mt-1">Social Media Marketing</p>
-                  <p class="text-gray-300 mt-4">Bold, dynamic Instagram story for a soccer event, driving engagement.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="events">
-                <img src="Red & White Casino Night Illustrated Party Invitation.png" alt="Casino Night Event Flyer" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Themed Event Promotion</h3>
-                  <p class="text-sm text-pink-300 mt-1">Event Marketing</p>
-                  <p class="text-gray-300 mt-4">Engaging flyer for themed party; illustration and clear typography.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="events">
-                <img src="club flyer.png" alt="Movie Night Flyer" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Community Event Flyer</h3>
-                  <p class="text-sm text-pink-300 mt-1">Event Marketing</p>
-                  <p class="text-gray-300 mt-4">Clean, family-friendly flyer for community movie night.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="events">
-                <img src="My project (2).png" alt="Fall Fest Flyer" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Seasonal Event Promotion</h3>
-                  <p class="text-sm text-pink-300 mt-1">Event Marketing</p>
-                  <p class="text-gray-300 mt-4">Warm, inviting flyer for seasonal festival, capturing atmosphere with illustration.</p>
-                </div>
-              </div>
-
-              <div class="portfolio-item rounded-lg overflow-hidden card-bg" data-category="events">
-                <img src="Spirit Days.png" alt="Spirit Days Flyer" class="w-full h-auto object-cover">
-                <div class="p-6">
-                  <h3 class="text-xl font-bold text-white">Multi-Event Campaign Flyer</h3>
-                  <p class="text-sm text-pink-300 mt-1">Event Marketing</p>
-                  <p class="text-gray-300 mt-4">Comprehensive flyer for a year-long series of school events, organized & engaging.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="skills" class="py-20 md:py-32 secondary-bg">
-            <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white">My Skills</h2>
-                    <p class="text-gray-400 mt-2">A snapshot of my capabilities and professional strengths.</p>
-                </div>
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-center">
-                        <div class="p-6 rounded-lg">
-                            <h3 class="text-xl font-bold text-white">Technical Proficiency</h3>
-                            <p class="text-gray-300 mt-2 leading-relaxed">Design & Video: Adobe Creative Suite, Canva, Capcut, DaVinci Resolve<br>Web & CMS: WordPress, Squarespace, Basic HTML<br>Platforms & Software: Cvent, Qualtrics & SurveyMonkey, Apricot</p>
-                        </div>
-                        <div class="p-6 rounded-lg">
-                            <h3 class="text-xl font-bold text-white">Marketing & Communication</h3>
-                            <p class="text-gray-300 mt-2 leading-relaxed">Video Production & Editing<br>Social Media Content Creation<br>Website & Email Copywriting<br>Digital & Print Design<br>Strong Written Communication</p>
-                        </div>
-                        <div class="p-6 rounded-lg">
-                            <h3 class="text-xl font-bold text-white">Professional & Interpersonal</h3>
-                            <p class="text-gray-300 mt-2 leading-relaxed">Project Coordination & Time Management<br>Peer Training & Onboarding<br>Team Collaboration & Creative Problem-Solving<br>Adaptability & Quick Learning</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact" class="py-20 md:py-32 bg-gray-900">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold text-white">Let's Connect</h2>
-                <p class="text-gray-400 mt-4 max-w-xl mx-auto">I'm excited about the possibility of joining your team and would love to hear from you.
+                <p>
+                    My approach is built on energy, curiosity, and a people-first mindset. I thrive in fast-paced environments where I can adapt to new challenges and collaborate with a team to see a project through from concept to completion. I'm excited by the opportunity to apply my strong work ethic and creative skills to help produce outstanding results.
                 </p>
-                <div class="mt-8">
-                    <a href="mailto:pina.6@wright.edu" class="accent-bg text-gray-900 font-bold py-4 px-8 rounded-full text-lg accent-bg-hover transition-all duration-300 shadow-lg shadow-sky-500/20">
-                        pina.6@wright.edu
-                    </a>
-                </div>
-                <div class="mt-8">
-                    <a href="https://www.linkedin.com/in/isabel-pina-wsu" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-sky-400 transition inline-block" aria-label="LinkedIn">
-                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-slate-50" x-data="{ filter: 'all' }">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-navy-900">Selected Works</h2>
+                <div class="w-16 h-1 bg-accent mx-auto mb-8"></div>
+                
+                <!-- Filter Controls -->
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4">
+                    <button @click="filter = 'all'" 
+                            :class="{ 'bg-navy-900 text-white': filter === 'all', 'bg-white text-slate-600 hover:bg-slate-100': filter !== 'all' }"
+                            class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-sm border border-transparent hover:shadow-md">
+                        All Projects
+                    </button>
+                    <button @click="filter = 'video'" 
+                            :class="{ 'bg-navy-900 text-white': filter === 'video', 'bg-white text-slate-600 hover:bg-slate-100': filter !== 'video' }"
+                            class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-sm border border-transparent hover:shadow-md">
+                        Video
+                    </button>
+                    <button @click="filter = 'design'" 
+                            :class="{ 'bg-navy-900 text-white': filter === 'design', 'bg-white text-slate-600 hover:bg-slate-100': filter !== 'design' }"
+                            class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-sm border border-transparent hover:shadow-md">
+                        Graphic Design
+                    </button>
+                    <button @click="filter = 'marketing'" 
+                            :class="{ 'bg-navy-900 text-white': filter === 'marketing', 'bg-white text-slate-600 hover:bg-slate-100': filter !== 'marketing' }"
+                            class="px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 shadow-sm border border-transparent hover:shadow-md">
+                        Events & Marketing
+                    </button>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <footer class="bg-gray-900 border-t border-gray-800">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
-            <p>&copy; 2024 Isabel Piña. All Rights Reserved.</p>
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Video Items -->
+                <article x-show="filter === 'all' || filter === 'video'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <a href="https://www.instagram.com/p/DPEhl8dEda3/" target="_blank" class="block relative h-64 overflow-hidden bg-slate-900">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all z-10"></div>
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/Popmartnyfw.PNG" alt="Pop Mart NYFW" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider z-20 text-navy-900">Video</div>
+                    </a>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 group-hover:text-accent transition-colors text-navy-900">Pop Mart NYFW Reel</h3>
+                        <p class="text-slate-600 text-sm mb-4">Fast-paced compilation featuring influencers styling collectibles.</p>
+                        <a href="https://www.instagram.com/p/DPEhl8dEda3/" target="_blank" class="text-sm font-semibold underline decoration-accent decoration-2 underline-offset-4 hover:text-accent text-navy-800">Watch on Instagram &rarr;</a>
+                    </div>
+                </article>
+
+                <article x-show="filter === 'all' || filter === 'video'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <a href="https://www.instagram.com/p/DQfKklTErJK/" target="_blank" class="block relative h-64 overflow-hidden bg-slate-900">
+                        <div class="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-all z-10"></div>
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/halloweenwithpopmart.PNG" alt="Halloween Pop Mart" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider z-20 text-navy-900">Video</div>
+                    </a>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 group-hover:text-accent transition-colors text-navy-900">Halloween Highlight Reel</h3>
+                        <p class="text-slate-600 text-sm mb-4">Seasonal highlight reel showcasing influencers and Pop Mart Halloween series.</p>
+                        <a href="https://www.instagram.com/p/DQfKklTErJK/" target="_blank" class="text-sm font-semibold underline decoration-accent decoration-2 underline-offset-4 hover:text-accent text-navy-800">Watch on Instagram &rarr;</a>
+                    </div>
+                </article>
+
+                <!-- Design Items -->
+                <article x-show="filter === 'all' || filter === 'design'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/Logo%20RL-1.png" alt="Roses & Lillies Logo" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Identity</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Roses & Lillies Apparel</h3>
+                        <p class="text-slate-600 text-sm">Sophisticated logo concept for a new fashion brand identity.</p>
+                    </div>
+                </article>
+
+                <article x-show="filter === 'all' || filter === 'design'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/My%20project-3.png" alt="Apparel Graphics" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Apparel</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Apparel Graphic Concepts</h3>
+                        <p class="text-slate-600 text-sm">Modern, typography-focused graphics for marketable t-shirts.</p>
+                    </div>
+                </article>
+                
+                <article x-show="filter === 'all' || filter === 'design'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/Untitled.png" alt="Cozy Cottage" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Logo</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Cozy Cottage</h3>
+                        <p class="text-slate-600 text-sm">Whimsical logo design for a younger audience clothing brand.</p>
+                    </div>
+                </article>
+
+                <article x-show="filter === 'all' || filter === 'design'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-navy-900">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/22W7_F25.png" alt="Personal Branding" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Branding</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Isa Bonita Identity</h3>
+                        <p class="text-slate-600 text-sm">Vibrant, neon-style personal branding and visual identity.</p>
+                    </div>
+                </article>
+
+                <!-- Marketing & Events -->
+                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/blue%20playful%20toy%20drive%20flyer.png" alt="Toy Drive Flyer" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500">
+                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Flyer</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Non-Profit Campaign</h3>
+                        <p class="text-slate-600 text-sm">Clear, effective flyer for a community diaper drive with strong CTA.</p>
+                    </div>
+                </article>
+
+                 <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/Senior%20Grad%20instagram%20story.png" alt="Instagram Story" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Social</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Senior Night Social</h3>
+                        <p class="text-slate-600 text-sm">Compelling Instagram Story graphic for promoting a community event.</p>
+                    </div>
+                </article>
+
+                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/Red%20&%20White%20Casino%20Night%20Illustrated%20Party%20Invitation.png" alt="Casino Night" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Event</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Casino Night</h3>
+                        <p class="text-slate-600 text-sm">Engaging illustrated flyer for a themed party event.</p>
+                    </div>
+                </article>
+                
+                 <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/club%20flyer.png" alt="Movie Night" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Event</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Community Movie Night</h3>
+                        <p class="text-slate-600 text-sm">Clean, family-friendly promotional material for local events.</p>
+                    </div>
+                </article>
+                 
+                  <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+                    <div class="relative h-64 overflow-hidden bg-slate-100">
+                        <!-- Changed to object-contain -->
+                        <img src="https://isabonita13.github.io/My%20project%20(2).png" alt="Fall Fest" class="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm text-navy-900">Event</div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-xl font-bold mb-2 text-navy-900">Fall Fest Promotion</h3>
+                        <p class="text-slate-600 text-sm">Warm, inviting flyer capturing the seasonal atmosphere.</p>
+                    </div>
+                </article>
+
+            </div>
+            
+            <!-- More Work Link -->
+            <div class="mt-16 text-center">
+                 <p class="text-slate-500 italic">...and many more video projects available on <a href="https://www.youtube.com/@isabelpina3830/videos" target="_blank" class="text-accent underline">YouTube</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / Resume Section -->
+    <section id="resume" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-navy-900">Experience & Education</h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Main Experience Column -->
+                <div class="lg:col-span-8">
+                    <h3 class="text-2xl font-serif font-bold text-navy-900 mb-8 flex items-center gap-3">
+                        <span class="w-8 h-8 rounded-full bg-navy-100 flex items-center justify-center text-navy-900">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </span>
+                        Relevant Experience
+                    </h3>
+
+                    <div class="space-y-10 border-l-2 border-slate-100 pl-8 ml-3 relative">
+                        <!-- Job 1 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-accent"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                                <h4 class="text-xl font-bold text-navy-900">Marketing & Events Intern</h4>
+                                <span class="text-sm font-medium text-accent">Feb 2026 - Present</span>
+                            </div>
+                            <div class="text-slate-600 font-medium mb-3">Dayton Development Coalition</div>
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm">
+                                <li>Support logistics for regional conferences & events via vendor coordination and guest registration.</li>
+                                <li>Assist with promotional activities and material production; track sponsor benefits to ensure deliverables are met.</li>
+                                <li>Analyze performance data to fix guest list errors and improve check-in efficiency.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Job 2 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-slate-300"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                                <h4 class="text-xl font-bold text-navy-900">VP of Community Outreach</h4>
+                                <span class="text-sm font-medium text-slate-400">May 2025 - Present</span>
+                            </div>
+                            <div class="text-slate-600 font-medium mb-3">AMA Chapter at Wright State University</div>
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm">
+                                <li>Lead planning and execution of all community service events for the 2025-2026 academic year.</li>
+                                <li>Cultivate relationships with alumni, faculty, and sponsors to secure funding and support.</li>
+                                <li>Strategically manage alumni data and outreach to drive membership growth.</li>
+                            </ul>
+                        </div>
+                        
+                         <!-- Job 3 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-slate-300"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                                <h4 class="text-xl font-bold text-navy-900">Marketing Intern</h4>
+                                <span class="text-sm font-medium text-slate-400">Sept 2025 - Jan 2026</span>
+                            </div>
+                            <div class="text-slate-600 font-medium mb-3">Nuwa Marketing</div>
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm">
+                                <li>Produced high-performing Instagram Reels by editing provided footage into fast-paced montages.</li>
+                                <li>Sourced influencers under tight deadlines and managed collaboration proposals.</li>
+                                <li>Provided competitive insights by researching rival brands to improve client strategies.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Job 4 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-slate-300"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                                <h4 class="text-xl font-bold text-navy-900">Intern</h4>
+                                <span class="text-sm font-medium text-slate-400">Sept 2024 - Apr 2025</span>
+                            </div>
+                            <div class="text-slate-600 font-medium mb-3">Dayton Development Coalition</div>
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm">
+                                <li>Enhanced user experience by updating and improving event website visual layouts.</li>
+                                <li>Analyzed and reported data weekly to inform strategic decisions.</li>
+                                <li>Managed event logistics and tracked attendee data using Cvent.</li>
+                            </ul>
+                        </div>
+
+                         <!-- Job 5 -->
+                        <div class="relative">
+                            <span class="absolute -left-[41px] top-1.5 w-5 h-5 rounded-full border-4 border-white bg-slate-300"></span>
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
+                                <h4 class="text-xl font-bold text-navy-900">Director of Marketing & Outreach</h4>
+                                <span class="text-sm font-medium text-slate-400">Nov 2023 - May 2024</span>
+                            </div>
+                            <div class="text-slate-600 font-medium mb-3">BridgeUSA Chapter at Capital University</div>
+                            <ul class="list-disc list-outside ml-4 space-y-2 text-slate-600 text-sm">
+                                <li>Managed end-to-end planning and promotion of chapter events.</li>
+                                <li>Created promotional materials (flyers, social graphics) using Canva and Adobe.</li>
+                                <li>Managed social media accounts to drive audience engagement.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar: Education & Awards -->
+                <div class="lg:col-span-4 space-y-12">
+                    
+                    <!-- Education -->
+                    <div>
+                         <h3 class="text-2xl font-serif font-bold text-navy-900 mb-8 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-navy-100 flex items-center justify-center text-navy-900">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path><path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path></svg>
+                            </span>
+                            Education
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-navy-900">Wright State University</h4>
+                                <p class="text-sm text-accent mb-2">Anticipated May 2027</p>
+                                <p class="text-slate-600 text-sm">B.S. in Marketing</p>
+                                <p class="text-slate-500 text-xs mt-1">GPA: 3.42</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                                <h4 class="font-bold text-navy-900">Capital University</h4>
+                                <p class="text-sm text-slate-400 mb-2">2023 - 2024</p>
+                                <p class="text-slate-600 text-sm">Pol. Sci, Econ & Psych Coursework</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Awards -->
+                    <div>
+                         <h3 class="text-2xl font-serif font-bold text-navy-900 mb-8 flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-full bg-navy-100 flex items-center justify-center text-navy-900">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                            </span>
+                            Honors & Awards
+                        </h3>
+                        
+                         <ul class="space-y-4">
+                            <li class="flex gap-3 items-start">
+                                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
+                                <div>
+                                    <span class="block font-bold text-navy-900 text-sm">Emerging Marketing Leaders</span>
+                                    <span class="text-slate-500 text-xs">Program Scholar & Mentee</span>
+                                </div>
+                            </li>
+                             <li class="flex gap-3 items-start">
+                                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
+                                <div>
+                                    <span class="block font-bold text-navy-900 text-sm">Upcoming President</span>
+                                    <span class="text-slate-500 text-xs">AMA Wright State Chapter</span>
+                                </div>
+                            </li>
+                             <li class="flex gap-3 items-start">
+                                <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"></span>
+                                <div>
+                                    <span class="block font-bold text-navy-900 text-sm">Dean's Honors List</span>
+                                    <span class="text-slate-500 text-xs">Academic Excellence</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4 text-navy-900">Words of Recommendation</h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-md transition-shadow duration-300">
+                    <div class="mb-6 text-accent">
+                        <svg class="w-8 h-8 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.325 15.923 14.941 15.081C15.557 14.239 16.366 13.562 17.366 13.05L17.366 12.05C16.366 12.05 15.65 11.538 15.217 10.513C14.783 9.488 14.567 8.358 14.567 7.125C14.567 5.925 14.967 4.908 15.767 4.075C16.567 3.242 17.583 2.825 18.817 2.825C19.883 2.825 20.783 3.192 21.517 3.925C22.25 4.658 22.617 5.608 22.617 6.775C22.617 8.275 22.183 9.683 21.317 11C20.45 12.317 19.383 13.533 18.117 14.65C16.85 15.767 15.483 16.633 14.017 17.25L14.017 21ZM2.017 21L2.017 18C2.017 16.896 2.325 15.923 2.941 15.081C3.557 14.239 4.366 13.562 5.366 13.05L5.366 12.05C4.366 12.05 3.65 11.538 3.217 10.513C2.783 9.488 2.567 8.358 2.567 7.125C2.567 5.925 2.967 4.908 3.767 4.075C4.567 3.242 5.583 2.825 6.817 2.825C7.883 2.825 8.783 3.192 9.517 3.925C10.25 4.658 10.617 5.608 10.617 6.775C10.617 8.275 10.183 9.683 9.317 11C8.45 12.317 7.383 13.533 6.117 14.65C4.85 15.767 3.483 16.633 2.017 17.25L2.017 21Z"/></svg>
+                    </div>
+                    <blockquote class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                        "I had the pleasure of supervising Isabel during her internship at Dayton Development Coalition, and I was consistently impressed by her proactive approach and ability to tackle complex projects. Isabel quickly became an asset to our economic development efforts... She is a collaborative team player who brings positive energy to the workplace. I have no doubt that Isabel has a bright future ahead of her, and I highly recommend her to any organization looking for a dedicated, high-potential talent."
+                    </blockquote>
+                    <div class="pt-4 border-t border-slate-100">
+                        <cite class="not-italic">
+                            <span class="block font-bold text-navy-900">Elaine Bryant</span>
+                            <span class="block text-xs text-slate-500 mt-1">Vice President, Government Strategy @ Divergent</span>
+                        </cite>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-md transition-shadow duration-300">
+                     <div class="mb-6 text-accent">
+                        <svg class="w-8 h-8 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.325 15.923 14.941 15.081C15.557 14.239 16.366 13.562 17.366 13.05L17.366 12.05C16.366 12.05 15.65 11.538 15.217 10.513C14.783 9.488 14.567 8.358 14.567 7.125C14.567 5.925 14.967 4.908 15.767 4.075C16.567 3.242 17.583 2.825 18.817 2.825C19.883 2.825 20.783 3.192 21.517 3.925C22.25 4.658 22.617 5.608 22.617 6.775C22.617 8.275 22.183 9.683 21.317 11C20.45 12.317 19.383 13.533 18.117 14.65C16.85 15.767 15.483 16.633 14.017 17.25L14.017 21ZM2.017 21L2.017 18C2.017 16.896 2.325 15.923 2.941 15.081C3.557 14.239 4.366 13.562 5.366 13.05L5.366 12.05C4.366 12.05 3.65 11.538 3.217 10.513C2.783 9.488 2.567 8.358 2.567 7.125C2.567 5.925 2.967 4.908 3.767 4.075C4.567 3.242 5.583 2.825 6.817 2.825C7.883 2.825 8.783 3.192 9.517 3.925C10.25 4.658 10.617 5.608 10.617 6.775C10.617 8.275 10.183 9.683 9.317 11C8.45 12.317 7.383 13.533 6.117 14.65C4.85 15.767 3.483 16.633 2.017 17.25L2.017 21Z"/></svg>
+                    </div>
+                    <blockquote class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                        "It was a pleasure to work with Isabel throughout her marketing internship! She assisted in influencer campaigns, events, brand partnerships, and more. Isabel also went above and beyond by creating exciting Reels for our agency’s Instagram... She had great communication skills, and worked well independently as well as with our team. I truly believe Isabel would be an asset to any team she joins!"
+                    </blockquote>
+                    <div class="pt-4 border-t border-slate-100">
+                        <cite class="not-italic">
+                            <span class="block font-bold text-navy-900">Keisha Mitchell</span>
+                            <span class="block text-xs text-slate-500 mt-1">Account Executive at Nuwa Marketing</span>
+                        </cite>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 flex flex-col h-full hover:shadow-md transition-shadow duration-300">
+                     <div class="mb-6 text-accent">
+                        <svg class="w-8 h-8 opacity-50" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.896 14.325 15.923 14.941 15.081C15.557 14.239 16.366 13.562 17.366 13.05L17.366 12.05C16.366 12.05 15.65 11.538 15.217 10.513C14.783 9.488 14.567 8.358 14.567 7.125C14.567 5.925 14.967 4.908 15.767 4.075C16.567 3.242 17.583 2.825 18.817 2.825C19.883 2.825 20.783 3.192 21.517 3.925C22.25 4.658 22.617 5.608 22.617 6.775C22.617 8.275 22.183 9.683 21.317 11C20.45 12.317 19.383 13.533 18.117 14.65C16.85 15.767 15.483 16.633 14.017 17.25L14.017 21ZM2.017 21L2.017 18C2.017 16.896 2.325 15.923 2.941 15.081C3.557 14.239 4.366 13.562 5.366 13.05L5.366 12.05C4.366 12.05 3.65 11.538 3.217 10.513C2.783 9.488 2.567 8.358 2.567 7.125C2.567 5.925 2.967 4.908 3.767 4.075C4.567 3.242 5.583 2.825 6.817 2.825C7.883 2.825 8.783 3.192 9.517 3.925C10.25 4.658 10.617 5.608 10.617 6.775C10.617 8.275 10.183 9.683 9.317 11C8.45 12.317 7.383 13.533 6.117 14.65C4.85 15.767 3.483 16.633 2.017 17.25L2.017 21Z"/></svg>
+                    </div>
+                    <blockquote class="text-slate-600 text-sm leading-relaxed mb-6 flex-grow">
+                        "Isabel consistently demonstrated high academic performance, professionalism, and a genuine commitment to her development... Isabel brings strong work ethic, curiosity, and a positive attitude to everything she does. I am confident she will continue to perform well and make valuable contributions in future marketing and business roles, and I recommend her without hesitation."
+                    </blockquote>
+                    <div class="pt-4 border-t border-slate-100">
+                        <cite class="not-italic">
+                            <span class="block font-bold text-navy-900">Kendall Goodrich</span>
+                            <span class="block text-xs text-slate-500 mt-1">Professor, Wright State University</span>
+                        </cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 bg-navy-900 text-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="text-center mb-16">
+                <h2 class="text-4xl font-serif font-bold mb-4">Skills & Tools</h2>
+                <div class="w-16 h-1 bg-accent mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Technical -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-navy-800 rounded-lg text-accent shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif">Technical</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Adobe Creative Suite</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Canva & CapCut</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>DaVinci Resolve</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>WordPress & Squarespace</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>HTML & CSS Basics</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Cvent & Qualtrics</li>
+                    </ul>
+                </div>
+
+                <!-- Marketing -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-4">
+                         <div class="p-3 bg-navy-800 rounded-lg text-accent shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif">Marketing</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Video Production</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Social Media Strategy</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Copywriting</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Digital & Print Design</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Communication Strategy</li>
+                    </ul>
+                </div>
+
+                <!-- Professional -->
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="p-3 bg-navy-800 rounded-lg text-accent shadow-lg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                        </div>
+                        <h3 class="text-xl font-bold font-serif">Professional</h3>
+                    </div>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Project Coordination</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Time Management</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Team Collaboration</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Creative Problem Solving</li>
+                        <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-accent"></span>Peer Training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-50 pt-20 pb-10 border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6 text-navy-900">Let's Create Together</h2>
+            <p class="text-slate-600 mb-8 max-w-xl mx-auto">I'm excited about the possibility of joining your team and would love to hear from you about how we can collaborate.</p>
+            
+            <a href="mailto:pina.6@wright.edu" class="inline-flex items-center gap-3 px-8 py-4 bg-navy-900 text-white rounded-full font-medium hover:bg-navy-800 transition-colors shadow-lg group">
+                <svg class="w-5 h-5 text-slate-400 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                pina.6@wright.edu
+            </a>
+
+            <div class="mt-20 pt-8 border-t border-slate-200 flex flex-col md:flex-row justify-between items-center text-slate-400 text-sm">
+                <p>&copy; 2024 Isabel Piña. All Rights Reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://www.linkedin.com/in/isabel-pina-wsu" target="_blank" class="hover:text-navy-900 transition-colors">LinkedIn</a>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="img01">
-    </div>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // --- Mobile Menu Toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        // --- Corrected Portfolio Filtering ---
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('#portfolio-grid > .portfolio-item');
-
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                const filter = button.dataset.filter;
-
-                portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.dataset.category === filter) {
-                        item.classList.remove('hidden');
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // --- Corrected Modal Logic ---
-        const modal = document.getElementById("myModal");
-        const modalImg = document.getElementById("img01");
-        const portfolioGrid = document.getElementById('portfolio-grid');
-
-        // This listener now lives on the grid itself
-        portfolioGrid.addEventListener('click', function(e) {
-            // Find the portfolio item that was clicked on, but only if it's not a video link
-            const portfolioItem = e.target.closest('.portfolio-item:not([data-category="video"])');
-            
-            if (portfolioItem) {
-                const img = portfolioItem.querySelector('img');
-                if (img) {
-                    modal.style.display = "block";
-                    modalImg.src = img.src;
-                }
-            }
-        });
-
-        // --- Modal Closing Logic ---
-        const span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    });
-</script>
-
 </body>
 </html>
-
-
-
