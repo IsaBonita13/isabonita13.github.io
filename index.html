@@ -152,22 +152,117 @@
         </div>
     </section>
 
-    <!-- Skills Section (What's in my toolbox?) -->
-    <section id="skills" class="py-32 bg-brand-blue text-cream text-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Skills Section (4 Core Pillars & Technical Toolbox) -->
+    <section id="skills" class="py-32 bg-brand-blue text-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="text-6xl md:text-8xl font-serif font-bold mb-6 leading-none">Skills &<br>Expertise</h2>
-            <p class="font-sans text-xl uppercase tracking-[0.2em] mb-16 opacity-90">What's In My Toolbox?</p>
+            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] mb-16 opacity-90">What I Bring to the Table</p>
             
-            <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                <span class="border-2 border-cream bg-cream text-brand-blue font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Video Production</span>
-                <span class="border-2 border-cream bg-transparent text-cream font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Social Media Strategy</span>
-                <span class="border-2 border-cream bg-cream text-brand-blue font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Copywriting</span>
-                <span class="border-2 border-cream bg-transparent text-cream font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Digital & Print Design</span>
-                <span class="border-2 border-cream bg-cream text-brand-blue font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Adobe Creative Suite</span>
-                <span class="border-2 border-cream bg-transparent text-cream font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Canva & CapCut</span>
-                <span class="border-2 border-cream bg-cream text-brand-blue font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Event Management</span>
-                <span class="border-2 border-cream bg-transparent text-cream font-bold px-6 py-3 rounded-full uppercase tracking-wider text-sm">Project Coordination</span>
+            <!-- 4 Core Pillars Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 text-left">
+                
+                <!-- Pillar 1: Content Creation & Video -->
+                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'video' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
+                    <div>
+                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">01 / Creative</div>
+                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Content Creation &amp; Video</h3>
+                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
+                            High-tempo short-form video, Instagram reels, and creative storytelling engineered for organic engagement and brand reach.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-8">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">CapCut</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">DaVinci Resolve</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Reels &amp; Short Form</span>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
+                        <span>View Matching Projects</span>
+                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 2: Graphic & Print Design -->
+                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'design' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
+                    <div>
+                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">02 / Visual</div>
+                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Graphic &amp; Print Design</h3>
+                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
+                            Brand identity systems, logo design, promotional event flyers, book covers, and custom merchandise artwork.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-8">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Adobe Creative Suite</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Canva</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Brand Identity</span>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
+                        <span>View Matching Projects</span>
+                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 3: Event Planning & Management -->
+                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'events' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
+                    <div>
+                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">03 / Logistics</div>
+                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Event Planning &amp; Management</h3>
+                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
+                            End-to-end logistics, vendor coordination, attendee registration, and promotional campaign rollouts for regional events and campus chapters.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-8">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Cvent</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Vendor Relations</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Campaign Promotions</span>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
+                        <span>View Matching Projects</span>
+                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
+                <!-- Pillar 4: Digital Strategy & Outreach -->
+                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'strategy' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
+                    <div>
+                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">04 / Strategy</div>
+                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Digital Strategy &amp; Outreach</h3>
+                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
+                            Multi-platform content calendars, influencer sourcing and proposals, email campaigns, community growth, and competitive brand research.
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-8">
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Content Calendars</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Influencer Outreach</span>
+                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Campaign Strategy</span>
+                        </div>
+                    </div>
+                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
+                        <span>View Matching Projects</span>
+                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                    </div>
+                </div>
+
             </div>
+
+            <!-- Technical Toolbox -->
+            <div class="border-t border-cream/20 pt-12">
+                <p class="text-xs uppercase tracking-[0.25em] font-bold text-cream/70 mb-6">Technical Proficiency &amp; Software Tools</p>
+                <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Adobe Creative Suite</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Canva</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">CapCut</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">DaVinci Resolve</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Cvent</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">WordPress &amp; Squarespace</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">HTML</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Qualtrics &amp; SurveyMonkey</span>
+                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Wild Apricot</span>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -222,23 +317,24 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-32 bg-brand-blue text-cream" x-data="{ filter: 'all', activeModal: null }">
+    <section id="portfolio" class="py-32 bg-brand-blue text-cream" x-data="{ filter: 'all', activeModal: null }" @filter-portfolio.window="filter = $event.detail; $nextTick(() => { document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); })">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-6xl md:text-8xl font-serif font-bold text-center mb-12 leading-none">Content<br>Creation</h2>
+            <h2 class="text-6xl md:text-8xl font-serif font-bold text-center mb-12 leading-none">Featured<br>Projects</h2>
             
             <!-- Filters -->
-            <div class="flex flex-wrap justify-center gap-4 mb-16">
-                <button @click="filter = 'all'" :class="{ 'bg-cream text-brand-blue': filter === 'all', 'bg-transparent text-cream border-cream': filter !== 'all' }" class="border-2 px-6 py-2 font-bold uppercase tracking-wider text-xs transition-colors">All</button>
-                <button @click="filter = 'video'" :class="{ 'bg-cream text-brand-blue': filter === 'video', 'bg-transparent text-cream border-cream': filter !== 'video' }" class="border-2 px-6 py-2 font-bold uppercase tracking-wider text-xs transition-colors">Video</button>
-                <button @click="filter = 'design'" :class="{ 'bg-cream text-brand-blue': filter === 'design', 'bg-transparent text-cream border-cream': filter !== 'design' }" class="border-2 px-6 py-2 font-bold uppercase tracking-wider text-xs transition-colors">Graphic Design</button>
-                <button @click="filter = 'marketing'" :class="{ 'bg-cream text-brand-blue': filter === 'marketing', 'bg-transparent text-cream border-cream': filter !== 'marketing' }" class="border-2 px-6 py-2 font-bold uppercase tracking-wider text-xs transition-colors">Events & Marketing</button>
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-16">
+                <button @click="filter = 'all'" :class="{ 'bg-cream text-brand-blue border-cream': filter === 'all', 'bg-transparent text-cream border-cream/40 hover:border-cream': filter !== 'all' }" class="border-2 px-5 py-2.5 font-bold uppercase tracking-wider text-xs transition-colors">All Projects</button>
+                <button @click="filter = 'video'" :class="{ 'bg-cream text-brand-blue border-cream': filter === 'video', 'bg-transparent text-cream border-cream/40 hover:border-cream': filter !== 'video' }" class="border-2 px-5 py-2.5 font-bold uppercase tracking-wider text-xs transition-colors">Content &amp; Video</button>
+                <button @click="filter = 'design'" :class="{ 'bg-cream text-brand-blue border-cream': filter === 'design', 'bg-transparent text-cream border-cream/40 hover:border-cream': filter !== 'design' }" class="border-2 px-5 py-2.5 font-bold uppercase tracking-wider text-xs transition-colors">Graphic Design</button>
+                <button @click="filter = 'events'" :class="{ 'bg-cream text-brand-blue border-cream': filter === 'events', 'bg-transparent text-cream border-cream/40 hover:border-cream': filter !== 'events' }" class="border-2 px-5 py-2.5 font-bold uppercase tracking-wider text-xs transition-colors">Event Planning</button>
+                <button @click="filter = 'strategy'" :class="{ 'bg-cream text-brand-blue border-cream': filter === 'strategy', 'bg-transparent text-cream border-cream/40 hover:border-cream': filter !== 'strategy' }" class="border-2 px-5 py-2.5 font-bold uppercase tracking-wider text-xs transition-colors">Digital Strategy</button>
             </div>
 
             <!-- Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
                 
-                <!-- Item 1: Pop Mart NYFW (Video) -->
-                <article x-show="filter === 'all' || filter === 'video'" x-transition class="flex justify-center">
+                <!-- Item 1: Pop Mart NYFW (Video & Strategy) -->
+                <article x-show="filter === 'all' || filter === 'video' || filter === 'strategy'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/Popmartnyfw.PNG', alt: 'Pop Mart New York Fashion Week video reel', title: 'Pop Mart NYFW', tag: 'Video Reel', desc: 'Fast-paced social media compilation featuring influencers styling collectible designer art toys during New York Fashion Week.', link: 'https://www.instagram.com/p/DPEhl8dEda3/', linkText: 'Watch on Instagram' }"
                          class="polaroid rotate-[-1deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -261,8 +357,8 @@
                     </div>
                 </article>
 
-                <!-- Item 2: Halloween Highlight (Video) -->
-                <article x-show="filter === 'all' || filter === 'video'" x-transition class="flex justify-center">
+                <!-- Item 2: Halloween Highlight (Video & Strategy) -->
+                <article x-show="filter === 'all' || filter === 'video' || filter === 'strategy'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/halloweenwithpopmart.PNG', alt: 'Halloween Pop Mart video reel', title: 'Halloween Highlight', tag: 'Video Reel', desc: 'Seasonal holiday reel highlighting influencer collaborations and the limited Pop Mart Halloween designer toy series.', link: 'https://www.instagram.com/p/DQfKklTErJK/', linkText: 'Watch on Instagram' }"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -441,8 +537,8 @@
                     </div>
                 </article>
 
-                <!-- Item 10: Diaper Drive (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 10: Diaper Drive (Events, Design & Strategy) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/blue playful toy drive flyer.png', alt: 'Elizabeth New Life Center Diaper Drive campaign flyer', title: 'Diaper Drive Campaign', tag: 'Campaign Flyer', desc: 'Playful, high-visibility promotional flyer designed for Elizabeth New Life Center community collection drive with clear action steps and drop-off instructions.' }"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -463,8 +559,8 @@
                     </div>
                 </article>
 
-                <!-- Item 11: Fall Fest (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 11: Fall Fest (Events & Design) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/My project (2).png', alt: 'Immaculate Heart Co-op Fall Fest promotional flyer', title: 'Fall Fest Promotion', tag: 'Event Promotion', desc: 'Festive autumn community event poster designed for Immaculate Heart Co-op, featuring bold seasonal orange geometry and expressive pumpkin illustrations.' }"
                          class="polaroid rotate-[-2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -485,8 +581,8 @@
                     </div>
                 </article>
 
-                <!-- Item 12: Casino Night (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 12: Casino Night (Events & Design) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/Red & White Casino Night Illustrated Party Invitation.png', alt: 'Monte Carlo Casino Night party invitation flyer', title: 'Monte Carlo Casino Night', tag: 'Event Invitation', desc: 'Hand-illustrated themed party invitation featuring stylized queen of hearts playing cards, gold foil speckle accents, and event details for a community fundraiser.' }"
                          class="polaroid rotate-[1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -507,8 +603,8 @@
                     </div>
                 </article>
 
-                <!-- Item 13: Student Council Movie Night (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 13: Student Council Movie Night (Events & Design) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/club flyer.png', alt: 'Student Council Movie Night flyer with popcorn', title: 'Student Council Movie Night', tag: 'Campus Event Flyer', desc: 'Retro popcorn-inspired campus event flyer created for an on-campus student council film screening of Night at the Museum 2.' }"
                          class="polaroid rotate-[-2.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -529,8 +625,8 @@
                     </div>
                 </article>
 
-                <!-- Item 14: School Spirit Days (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 14: School Spirit Days (Events & Design) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/Spirit Days.png', alt: 'School Spirit Days year-long calendar poster with sticky notes', title: 'School Spirit Days Calendar', tag: 'Promotional Schedule', desc: 'Creative sticky-note calendar poster promoting year-round school spirit dress-up days, themes, and community participation from September through May.' }"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -551,8 +647,8 @@
                     </div>
                 </article>
 
-                <!-- Item 15: Cross Country Senior Night (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 15: Cross Country Senior Night (Events, Design & Strategy) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/Senior Grad instagram story.png', alt: 'Cross Country Senior Night Instagram Story graphic', title: 'Cross Country Senior Night', tag: 'Social Media Story', desc: 'High-contrast red and black Instagram Story layout combining varsity cross-country team photography with bold typography to honor graduating seniors.' }"
                          class="polaroid rotate-[-1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
@@ -573,8 +669,8 @@
                     </div>
                 </article>
 
-                <!-- Item 16: Soccer Senior Night (Events & Marketing) -->
-                <article x-show="filter === 'all' || filter === 'marketing'" x-transition class="flex justify-center">
+                <!-- Item 16: Soccer Senior Night (Events, Design & Strategy) -->
+                <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
                     <div @click="activeModal = { img: 'images/ig story-1.png', alt: 'Soccer Senior Night athletic Instagram Story announcement', title: 'Soccer Senior Night', tag: 'Social Media Story', desc: 'Dynamic athletic promotion story graphic featuring masked photo lettering and match details designed for team social media channels.' }"
                          class="polaroid rotate-[2.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
