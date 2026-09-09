@@ -87,11 +87,13 @@
                 </div>
                 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-10 items-center">
+                <div class="hidden md:flex space-x-8 lg:space-x-10 items-center">
                     <a href="#about" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">About</a>
-                    <a href="#portfolio" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Portfolio</a>
-                    <a href="#resume" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Experience</a>
                     <a href="#skills" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Skills</a>
+                    <a href="#toolbox" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Toolbox</a>
+                    <a href="#resume" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Experience</a>
+                    <a href="#education" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Education</a>
+                    <a href="#portfolio" class="text-xs tracking-widest font-bold uppercase hover:opacity-60 transition-opacity">Portfolio</a>
                     <a href="#contact" class="px-6 py-2.5 bg-brand-blue text-cream text-xs font-bold uppercase tracking-widest rounded-none hover:bg-black transition-colors">Let's Talk</a>
                 </div>
 
@@ -112,9 +114,11 @@
              class="md:hidden bg-cream shadow-xl absolute w-full top-full left-0 border-t border-brand-blue/10">
             <div class="px-4 py-6 space-y-4 text-center">
                 <a href="#about" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">About</a>
-                <a href="#portfolio" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Portfolio</a>
-                <a href="#resume" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Experience</a>
                 <a href="#skills" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Skills</a>
+                <a href="#toolbox" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Toolbox</a>
+                <a href="#resume" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Experience</a>
+                <a href="#education" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Education</a>
+                <a href="#portfolio" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase hover:opacity-60">Portfolio</a>
                 <a href="#contact" @click="mobileMenuOpen = false" class="block text-sm tracking-widest font-bold uppercase text-brand-blue border-b-2 border-brand-blue inline-block pb-1">Contact Me</a>
             </div>
         </div>
@@ -152,164 +156,395 @@
         </div>
     </section>
 
-    <!-- Skills Section (4 Core Pillars & Technical Toolbox) -->
-    <section id="skills" class="py-32 bg-brand-blue text-cream">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <!-- Skills & Expertise Section -->
+    <section id="skills" class="py-28 md:py-36 bg-brand-blue text-cream text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-6xl md:text-8xl font-serif font-bold mb-6 leading-none">Skills &<br>Expertise</h2>
-            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] mb-16 opacity-90">What I Bring to the Table</p>
+            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] mb-12 opacity-90">Areas of Focus</p>
             
-            <!-- 4 Core Pillars Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20 text-left">
+            <!-- 4 Skill Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
+                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'video' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-full transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                    <span>Content Creation &amp; Video</span>
+                    <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                </button>
+
+                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'design' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-full transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                    <span>Graphic &amp; Print Design</span>
+                    <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                </button>
+
+                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'events' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-full transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                    <span>Event Planning &amp; Management</span>
+                    <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                </button>
+
+                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'strategy' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
+                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-full transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                    <span>Digital Strategy &amp; Outreach</span>
+                    <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                </button>
+            </div>
+
+            <p class="font-sans text-xs uppercase tracking-widest text-cream/60 mt-10">
+                Click any focus area to explore matching projects below &darr;
+            </p>
+        </div>
+    </section>
+
+    <!-- Toolbox Section -->
+    <section id="toolbox" class="py-28 md:py-36 bg-cream text-brand-blue text-center border-b border-brand-blue/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-none whitespace-nowrap">My Toolbox</h2>
+            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] mb-16 opacity-80">Software, Systems &amp; Platforms</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-6xl mx-auto">
                 
-                <!-- Pillar 1: Content Creation & Video -->
-                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'video' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
-                    <div>
-                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">01 / Creative</div>
-                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Content Creation &amp; Video</h3>
-                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
-                            High-tempo short-form video, Instagram reels, and creative storytelling engineered for organic engagement and brand reach.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5 mb-8">
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">CapCut</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">DaVinci Resolve</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Reels &amp; Short Form</span>
-                        </div>
+                <!-- Adobe Creative Suite -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/adobe.svg" alt="Adobe Creative Suite" class="max-h-8 max-w-[36px] object-contain">
                     </div>
-                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
-                        <span>View Matching Projects</span>
-                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Adobe Suite</span>
                 </div>
 
-                <!-- Pillar 2: Graphic & Print Design -->
-                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'design' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
-                    <div>
-                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">02 / Visual</div>
-                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Graphic &amp; Print Design</h3>
-                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
-                            Brand identity systems, logo design, promotional event flyers, book covers, and custom merchandise artwork.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5 mb-8">
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Adobe Creative Suite</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Canva</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Brand Identity</span>
-                        </div>
+                <!-- Canva -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/canva.svg" alt="Canva" class="max-h-8 max-w-[36px] object-contain">
                     </div>
-                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
-                        <span>View Matching Projects</span>
-                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Canva</span>
                 </div>
 
-                <!-- Pillar 3: Event Planning & Management -->
-                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'events' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
-                    <div>
-                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">03 / Logistics</div>
-                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Event Planning &amp; Management</h3>
-                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
-                            End-to-end logistics, vendor coordination, attendee registration, and promotional campaign rollouts for regional events and campus chapters.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5 mb-8">
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Cvent</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Vendor Relations</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Campaign Promotions</span>
-                        </div>
+                <!-- CapCut -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/capcut.svg" alt="CapCut" class="max-h-8 max-w-[36px] object-contain">
                     </div>
-                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
-                        <span>View Matching Projects</span>
-                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">CapCut</span>
                 </div>
 
-                <!-- Pillar 4: Digital Strategy & Outreach -->
-                <div @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'strategy' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                     class="bg-cream/5 border-2 border-cream/20 hover:border-cream p-8 flex flex-col justify-between transition-all duration-300 group cursor-pointer hover:-translate-y-1 hover:shadow-2xl">
-                    <div>
-                        <div class="text-cream/50 text-xs font-mono mb-4 tracking-widest uppercase">04 / Strategy</div>
-                        <h3 class="font-serif text-2xl font-bold mb-3 text-cream group-hover:text-cream">Digital Strategy &amp; Outreach</h3>
-                        <p class="font-sans text-sm leading-relaxed text-cream/80 mb-6">
-                            Multi-platform content calendars, influencer sourcing and proposals, email campaigns, community growth, and competitive brand research.
-                        </p>
-                        <div class="flex flex-wrap gap-1.5 mb-8">
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Content Calendars</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Influencer Outreach</span>
-                            <span class="text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 bg-cream/10 text-cream">Campaign Strategy</span>
-                        </div>
+                <!-- DaVinci Resolve -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/davinciresolve.svg" alt="DaVinci Resolve" class="max-h-8 max-w-[36px] object-contain">
                     </div>
-                    <div class="inline-flex items-center justify-between w-full pt-4 border-t border-cream/20 text-xs font-bold uppercase tracking-widest text-cream group-hover:text-cream transition-colors">
-                        <span>View Matching Projects</span>
-                        <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">DaVinci Resolve</span>
+                </div>
+
+                <!-- Cvent -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/cvent.svg" alt="Cvent" class="max-h-6 max-w-[70px] object-contain">
                     </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Cvent</span>
+                </div>
+
+                <!-- WordPress -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/wordpress.svg" alt="WordPress" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">WordPress</span>
+                </div>
+
+                <!-- Squarespace -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/squarespace.svg" alt="Squarespace" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Squarespace</span>
+                </div>
+
+                <!-- Drupal -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/drupal.svg" alt="Drupal" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Drupal</span>
+                </div>
+
+                <!-- HTML5 -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/html5.svg" alt="HTML5" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">HTML</span>
+                </div>
+
+                <!-- Gemini -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/gemini.svg" alt="Google Gemini" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Gemini</span>
+                </div>
+
+                <!-- Microsoft Office -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/microsoftoffice.svg" alt="Microsoft Office" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">MS Office</span>
+                </div>
+
+                <!-- Google Workspace -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/googleworkspace.svg" alt="Google Workspace" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Workspace</span>
+                </div>
+
+                <!-- YouTube -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/youtube.svg" alt="YouTube" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">YouTube</span>
+                </div>
+
+                <!-- Instagram -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/instagram.svg" alt="Instagram" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Instagram</span>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/linkedin.svg" alt="LinkedIn" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">LinkedIn</span>
+                </div>
+
+                <!-- Qualtrics -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/qualtrics.svg" alt="Qualtrics" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Qualtrics</span>
+                </div>
+
+                <!-- SurveyMonkey -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/surveymonkey.svg" alt="SurveyMonkey" class="max-h-8 max-w-[36px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">SurveyMonkey</span>
+                </div>
+
+                <!-- Wild Apricot -->
+                <div class="w-28 sm:w-32 h-24 sm:h-28 bg-white rounded-xl shadow-sm border border-brand-blue/10 p-3 flex flex-col items-center justify-center gap-2 hover:-translate-y-1 hover:shadow-lg hover:border-brand-blue/30 transition-all duration-300">
+                    <div class="h-10 w-full flex items-center justify-center">
+                        <img src="images/logos/wildapricot.svg" alt="Wild Apricot" class="max-h-6 max-w-[80px] object-contain">
+                    </div>
+                    <span class="text-[11px] font-bold tracking-wider uppercase text-brand-blue text-center">Wild Apricot</span>
                 </div>
 
             </div>
-
-            <!-- Technical Toolbox -->
-            <div class="border-t border-cream/20 pt-12">
-                <p class="text-xs uppercase tracking-[0.25em] font-bold text-cream/70 mb-6">Technical Proficiency &amp; Software Tools</p>
-                <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Adobe Creative Suite</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Canva</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">CapCut</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">DaVinci Resolve</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Cvent</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">WordPress &amp; Squarespace</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">HTML</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Qualtrics &amp; SurveyMonkey</span>
-                    <span class="border border-cream/40 bg-cream/5 text-cream font-bold px-4 py-2 rounded-full uppercase tracking-wider text-xs hover:border-cream transition-colors">Wild Apricot</span>
-                </div>
-            </div>
-
         </div>
     </section>
 
     <!-- Experience / Resume Section -->
     <section id="resume" class="py-32 bg-cream text-brand-blue">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-6xl md:text-8xl font-serif font-bold text-center mb-24 leading-none">Working<br>Experience</h2>
+            <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-center mb-6 leading-none whitespace-nowrap">Work Experience</h2>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] text-center mb-20 opacity-80">Career &amp; Leadership Journey</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
                 <!-- 2026 -->
-                <div class="border-t-4 border-brand-blue pt-6">
-                    <h3 class="text-7xl font-serif font-bold mb-6 opacity-20">2026</h3>
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xl font-bold uppercase tracking-widest mb-1">Dayton Development Coalition</h4>
-                            <p class="text-sm font-bold opacity-70 mb-4">MARKETING & EVENTS INTERN</p>
-                            <p class="text-base leading-relaxed opacity-90">Support logistics for regional conferences & events. Assist with promotional activities and material production.</p>
+                <div class="pb-10 md:pb-8 lg:pb-0 border-b md:border-b lg:border-b-0 md:border-r lg:border-r border-brand-blue/20 lg:pr-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2026</h3>
+                        <div class="space-y-8">
+                            <!-- Digital Intern – H&A Fine Jewelry -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Digital Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">H&amp;A Fine Jewelry</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Build and optimize a luxury e-commerce platform focused on high-end product integration, SEO, and mobile responsiveness. Design multi-platform content calendars and collaborate with leadership on cohesive email and social campaigns.
+                                </p>
+                            </div>
+
+                            <!-- Marketing & Events Intern - Dayton Development Coalition -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Marketing &amp; Events Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Dayton Development Coalition</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Support regional conference and event logistics by coordinating vendors, guest registration, and promotional materials. Track partner deliverables and analyze event performance data to optimize the attendee check-in experience.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 2025 -->
-                <div class="border-t-4 border-brand-blue pt-6">
-                    <h3 class="text-7xl font-serif font-bold mb-6 opacity-20">2025</h3>
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xl font-bold uppercase tracking-widest mb-1">AMA Chapter</h4>
-                            <p class="text-sm font-bold opacity-70 mb-4">VP OF COMMUNITY OUTREACH</p>
-                            <p class="text-base leading-relaxed opacity-90">Lead planning and execution of all community service events. Cultivate relationships with alumni and sponsors.</p>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-bold uppercase tracking-widest mb-1">Nuwa Marketing</h4>
-                            <p class="text-sm font-bold opacity-70 mb-4">MARKETING INTERN</p>
-                            <p class="text-base leading-relaxed opacity-90">Produced high-performing Instagram Reels and managed influencer collaborations.</p>
+                <div class="pb-10 md:pb-8 lg:pb-0 border-b md:border-b lg:border-b-0 lg:border-r border-brand-blue/20 md:pl-8 lg:px-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2025</h3>
+                        <div class="space-y-8">
+                            <!-- VP of Community Outreach - AMA Chapter -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">VP of Community Outreach</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">AMA Chapter at WSU</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Lead the planning and execution of all collegiate community service events for the academic year. Cultivate relationships with alumni, faculty, and corporate sponsors while managing outreach data to drive chapter membership.
+                                </p>
+                            </div>
+
+                            <!-- Marketing Intern – Nuwa Marketing -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Marketing Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Nuwa Marketing</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Produced high-performing Instagram Reels and viral short-form video montages from raw client footage. Sourced prospective influencer partnerships under tight deadlines and conducted competitive research on industry marketing trends.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- 2024 -->
-                <div class="border-t-4 border-brand-blue pt-6">
-                    <h3 class="text-7xl font-serif font-bold mb-6 opacity-20">2024</h3>
-                    <div class="space-y-8">
-                        <div>
-                            <h4 class="text-xl font-bold uppercase tracking-widest mb-1">BridgeUSA</h4>
-                            <p class="text-sm font-bold opacity-70 mb-4">DIRECTOR OF MARKETING</p>
-                            <p class="text-base leading-relaxed opacity-90">Managed end-to-end planning and promotion of chapter events, created all promotional materials.</p>
+                <div class="pb-10 md:pb-0 border-b md:border-b-0 lg:border-b-0 md:border-r lg:border-r border-brand-blue/20 md:pr-8 lg:px-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2024</h3>
+                        <div class="space-y-8">
+                            <!-- Marketing & Event Logistics Intern - Dayton Development Coalition -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Event Logistics Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Dayton Development Coalition</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Enhanced website layouts and digital user experience to drive attendee engagement for regional business initiatives. Managed complete event logistics and tracked attendee data using Cvent while delivering weekly analytical reports.
+                                </p>
+                            </div>
+
+                            <!-- Director of Marketing & Outreach - BridgeUSA Chapter -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Director of Marketing</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">BridgeUSA Chapter</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Managed the end-to-end planning, branding, and promotional strategy for campus-wide civil discourse events. Designed all digital and print promotional materials using Adobe Creative Suite and Canva to grow audience engagement.
+                                </p>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- 2023 -->
+                <div class="md:pl-8 lg:pl-8 flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2023</h3>
+                        <div class="space-y-8">
+                            <!-- Marketing & Outreach - BridgeUSA Chapter -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Marketing &amp; Outreach Coordinator</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">BridgeUSA Chapter</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Spearheaded the chapter's marketing launch at Capital University to establish its brand identity and student recruitment pipeline. Created foundational digital outreach templates and promotional materials for inaugural campus dialogue forums.
+                                </p>
+                            </div>
+
+                            <!-- Front Desk Receptionist - Be Pampered Nails & Spa -->
+                            <div>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Front Desk Receptionist</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Be Pampered Nails &amp; Spa</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Managed high-volume front desk operations, appointment scheduling, and client relations in a fast-paced environment. Resolved client inquiries and trained new team members to maintain high operational service standards.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-28 md:py-36 bg-cream text-brand-blue border-t border-brand-blue/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 md:mb-20">
+                <h2 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold mb-6 leading-none whitespace-nowrap">Education</h2>
+                <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] opacity-80">Academic Background &amp; Honors</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 max-w-5xl mx-auto">
+                <!-- Academic Degrees -->
+                <div class="space-y-6">
+                    <h3 class="text-xs font-bold uppercase tracking-[0.25em] text-brand-blue/60 pb-3 border-b border-brand-blue/20">Degrees &amp; Institutions</h3>
+
+                    <!-- Wright State University -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-8 shadow-sm border border-brand-blue/10 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                            <h4 class="text-2xl font-serif font-bold text-brand-blue">Wright State University</h4>
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-blue/70">Fairborn, OH</span>
+                        </div>
+                        <p class="text-sm font-extrabold uppercase tracking-wider text-brand-blue mb-2">Bachelor of Science in Marketing</p>
+                        <div class="flex flex-wrap gap-x-3 gap-y-1 text-xs font-bold text-brand-blue/70 uppercase tracking-widest mb-4">
+                            <span>GPA: 3.42</span>
+                            <span>&bull;</span>
+                            <span>Anticipated Graduation: May 2027</span>
+                        </div>
+                        <div class="pt-4 border-t border-brand-blue/10">
+                            <p class="text-[11px] font-bold uppercase tracking-wider text-brand-blue/70 mb-1">Relevant Coursework</p>
+                            <p class="text-xs sm:text-sm opacity-85 leading-relaxed">
+                                Principles of Marketing, Business Writing, Accounting Principles I, Intro to Python Programming AI.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Capital University -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-8 shadow-sm border border-brand-blue/10 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                            <h4 class="text-2xl font-serif font-bold text-brand-blue">Capital University</h4>
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-blue/70">Bexley, OH</span>
+                        </div>
+                        <p class="text-sm font-extrabold uppercase tracking-wider text-brand-blue mb-2">Political Science, Economics &amp; Psychology</p>
+                        <p class="text-xs font-bold uppercase tracking-widest text-brand-blue/70">Fall 2023 &ndash; Spring 2024</p>
+                    </div>
+                </div>
+
+                <!-- Honors & Leadership -->
+                <div class="space-y-6">
+                    <h3 class="text-xs font-bold uppercase tracking-[0.25em] text-brand-blue/60 pb-3 border-b border-brand-blue/20">Honors &amp; Recognition</h3>
+
+                    <!-- Emerging Marketing Leaders Program -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-8 shadow-sm border border-brand-blue/10 hover:shadow-md transition-shadow">
+                        <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-2">
+                            <h4 class="text-xl font-serif font-bold text-brand-blue">Emerging Marketing Leaders Program</h4>
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-blue/70">Fall 2025 &ndash; Present</span>
+                        </div>
+                        <p class="text-xs font-extrabold uppercase tracking-wider text-brand-blue mb-2.5">Two-Time Scholarship Recipient</p>
+                        <p class="text-xs sm:text-sm opacity-85 leading-relaxed">
+                            Selected for a competitive program bridging academic theory with executive marketing practice, featuring one-on-one mentorship with senior corporate marketing executives.
+                        </p>
+                    </div>
+
+                    <!-- Leadership Roles -->
+                    <div class="bg-white rounded-2xl p-7 sm:p-8 shadow-sm border border-brand-blue/10 hover:shadow-md transition-shadow space-y-4">
+                        <div>
+                            <h4 class="text-lg font-serif font-bold text-brand-blue">President, AMA Chapter at Wright State University</h4>
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-brand-blue/70 mt-1">Collegiate Student Leadership</p>
+                        </div>
+                        <div class="pt-4 border-t border-brand-blue/10">
+                            <h4 class="text-lg font-serif font-bold text-brand-blue">Outstanding Undergraduate Student Leader</h4>
+                            <p class="text-xs font-extrabold uppercase tracking-wider text-brand-blue/70 mt-1">Academic &amp; University Honors</p>
+                        </div>
+                    </div>
+
+                    <!-- Resume Download Link -->
+                    <div class="pt-2 text-center lg:text-left">
+                        <a href="Isabel_Pontious_Resume.pdf" target="_blank" class="inline-flex items-center justify-center gap-3 w-full py-3.5 px-6 bg-brand-blue text-cream hover:bg-black font-sans text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:scale-[1.02] shadow-sm">
+                            <span>Download Full Resume (PDF)</span>
+                            <span>&rarr;</span>
+                        </a>
                     </div>
                 </div>
             </div>
