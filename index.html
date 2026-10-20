@@ -93,6 +93,38 @@
                 transition: none;
             }
         }
+
+        /* Modern Native HTML5 Dialog Styling & Transitions */
+        dialog.project-dialog {
+            opacity: 0;
+            transform: scale(0.96) translateY(8px);
+            transition: opacity 0.25s ease-out, transform 0.25s ease-out, display 0.25s ease-out allow-discrete, overlay 0.25s ease-out allow-discrete;
+        }
+        dialog.project-dialog[open] {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        @starting-style {
+            dialog.project-dialog[open] {
+                opacity: 0;
+                transform: scale(0.96) translateY(8px);
+            }
+        }
+        dialog.project-dialog::backdrop {
+            background-color: rgba(0, 0, 0, 0);
+            backdrop-filter: blur(0px);
+            transition: background-color 0.25s ease-out, backdrop-filter 0.25s ease-out, display 0.25s ease-out allow-discrete, overlay 0.25s ease-out allow-discrete;
+        }
+        dialog.project-dialog[open]::backdrop {
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+        }
+        @starting-style {
+            dialog.project-dialog[open]::backdrop {
+                background-color: rgba(0, 0, 0, 0);
+                backdrop-filter: blur(0px);
+            }
+        }
     </style>
 </head>
 <body class="bg-cream text-brand-blue antialiased selection:bg-brand-blue selection:text-cream">
@@ -612,9 +644,9 @@
     <!-- Experience / Resume Section -->
     <section id="resume" class="py-32 bg-cream text-brand-blue">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="reveal-on-scroll text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-center mb-6 leading-none whitespace-nowrap">Work Experience</h2>
+            <h2 class="reveal-on-scroll text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-center mb-6 leading-none">Experience &amp; Leadership</h2>
             
-            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] text-center mb-20 opacity-80">Career &amp; Leadership Journey</p>
+            <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] text-center mb-20 opacity-80">Career, Leadership &amp; Community Track Record</p>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-0">
                 <!-- 2026 -->
@@ -622,30 +654,46 @@
                     <div>
                         <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2026</h3>
                         <div class="space-y-7">
+                            <!-- WORK EXPERIENCE (ON TOP) -->
                             <!-- Marketing & Events Intern - Dayton Development Coalition -->
                             <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Marketing &amp; Events Intern</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Dayton Development Coalition</p>
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Relevant Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Marketing &amp; Events Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">Dayton Development Coalition</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Coordinate on-site logistics and vendor relations for 10+ corporate conferences with 2,000+ registrations. Safeguard partner deliverables and analyzed attendance data to execute process improvements that resolved errors and generated <span class="font-bold text-brand-blue">$10,000 in cost savings</span>.
+                                    Support on-site logistics and vendor coordination for regional business conferences and 10+ corporate events representing 2,000+ registrations. Produce promotional event materials, monitor partner deliverables, and analyzed attendance data to execute process improvements that resolved errors and generated <span class="font-bold text-brand-blue">$10,000 in cost savings</span>.
                                 </p>
                             </div>
 
                             <!-- Digital Intern – H&A Fine Jewelry -->
-                            <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Digital Intern</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">H&amp;A Fine Jewelry</p>
+                            <div class="pt-5 border-t border-brand-blue/15">
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Relevant Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Digital Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">H&amp;A Fine Jewelry</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Build and optimize a luxury jewelry e-commerce website with a focus on technical SEO, mobile responsiveness, and high-end catalog architecture. Direct multi-platform editorial calendars and collaborate with leadership on cohesive luxury campaigns.
+                                    Build and optimize a luxury jewelry e-commerce website, focusing on technical SEO, mobile responsiveness, and high-end product catalog integration. Design multi-platform editorial calendars and collaborate directly with leadership on cohesive luxury campaigns.
                                 </p>
                             </div>
 
-                            <!-- President - AMA Chapter -->
-                            <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">President</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">AMA Chapter at WSU</p>
+                            <!-- LEADERSHIP & CAMPUS INVOLVEMENT (MIDDLE) -->
+                            <!-- President - American Marketing Association Chapter -->
+                            <div class="pt-5 border-t border-brand-blue/15">
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Leadership &amp; Campus</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">President</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">AMA Chapter, Wright State</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Lead executive board operations and collegiate strategy across the Raj Soin College of Business. Secured <span class="font-bold text-brand-blue">$1,750 in sponsorships</span> and executed multi-channel promotion achieving a <span class="font-bold text-brand-blue">492% attendance surge</span> (scaling from 38 to 225 attendees).
+                                    Lead executive board operations, establishing chapter strategy, programming milestones, and professional development workshops. Generated <span class="font-bold text-brand-blue">$1,750 in corporate sponsorships</span> while driving promotional outreach that accomplished a <span class="font-bold text-brand-blue">492% attendance surge</span> (scaling from 38 to 225 participants).
+                                </p>
+                            </div>
+
+                            <!-- VOLUNTEER EXPERIENCE (BOTTOM) -->
+                            <!-- Head Coach High School Volleyball - Chesterton Academy -->
+                            <div class="pt-5 border-t border-brand-blue/15">
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Volunteer Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Head Coach High School Volleyball</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">Chesterton Academy</p>
+                                <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
+                                    Plan and conduct team practices, instructing student-athletes on offensive/defensive strategy, technical skills, and sportsmanship. Manage match-day operations, court substitutions, and player performance development.
                                 </p>
                             </div>
                         </div>
@@ -657,21 +705,25 @@
                     <div>
                         <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2025</h3>
                         <div class="space-y-7">
+                            <!-- WORK EXPERIENCE (ON TOP) -->
                             <!-- Marketing Intern – Nuwa Marketing -->
                             <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Marketing Intern</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Nuwa Marketing</p>
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Relevant Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Marketing Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">Nuwa Marketing</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Produced high-performing, fast-paced Instagram Reels and short-form video montages by editing client media assets. Sourced targeted influencers under tight turnaround deadlines, coordinated outreach proposals, and conducted competitive brand research.
+                                    Produced high-performing, fast-paced Instagram Reels and short-form video montages by editing client assets. Sourced targeted influencers under strict deadlines, coordinating outreach proposals, and conducted competitive market research on rival brands.
                                 </p>
                             </div>
 
-                            <!-- VP of Community Outreach - AMA Chapter -->
-                            <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">VP of Outreach</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">AMA Chapter at WSU</p>
+                            <!-- LEADERSHIP & CAMPUS INVOLVEMENT (MIDDLE) -->
+                            <!-- VP of Community Outreach - American Marketing Association Chapter -->
+                            <div class="pt-5 border-t border-brand-blue/15">
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Leadership &amp; Campus</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">VP of Community Outreach</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">AMA Chapter, Wright State</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Cultivated strategic relationships with alumni, faculty, and area businesses, securing $300 in donations and event support. Maintained and segmented alumni outreach datasets to enhance membership onboarding and engagement.
+                                    Cultivated relationships with alumni, university faculty, and community businesses, generating <span class="font-bold text-brand-blue">$300 in donations</span> and event support. Maintained and segmented alumni outreach records to drive membership recruitment and engagement.
                                 </p>
                             </div>
                         </div>
@@ -683,47 +735,54 @@
                     <div>
                         <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2024</h3>
                         <div class="space-y-7">
+                            <!-- WORK EXPERIENCE (ON TOP) -->
                             <!-- Event Logistics Intern - Dayton Development Coalition -->
                             <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Event Logistics Intern</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Dayton Development Coalition</p>
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Relevant Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Event Logistics Intern</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">Dayton Development Coalition</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Managed regional event websites with accurate agendas and speaker profiles. Built event configurations and registration workflows within Cvent, facilitated on-site check-in desks, and designed executive PowerPoint decks for leadership meetings.
+                                    Maintained and updated regional event websites ensuring accurate agendas and speaker details. Configured event build setups and registration workflows within Cvent, managed attendee check-in desks, and formatted executive PowerPoint presentations.
                                 </p>
                             </div>
 
+                            <!-- LEADERSHIP & CAMPUS INVOLVEMENT (MIDDLE) -->
                             <!-- Director of Marketing & Outreach - BridgeUSA Chapter -->
-                            <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Director of Marketing</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">BridgeUSA Chapter</p>
+                            <div class="pt-5 border-t border-brand-blue/15">
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Leadership &amp; Campus</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Director of Marketing &amp; Outreach</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">BridgeUSA Chapter, Capital Univ.</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Directed end-to-end promotional strategy and campaign planning for 3 campus-wide civil dialogue forums. Created all digital and print promotional materials using Adobe Creative Suite and managed the official Instagram account.
+                                    Directed end-to-end event promotion and campaign planning for 3 campus-wide civil dialogue events. Designed all digital and print promotional materials with Adobe Creative Suite and managed the chapter's official Instagram account.
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 2023 -->
+                <!-- 2023 & Prior -->
                 <div class="md:pl-8 lg:pl-8 flex flex-col justify-between">
                     <div>
-                        <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2023</h3>
+                        <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2022</h3>
                         <div class="space-y-7">
-                            <!-- Head Coach - High School Volleyball -->
+                            <!-- VOLUNTEER EXPERIENCE (BOTTOM) -->
+                            <!-- Student Assistant Junior High Volleyball Coach -->
                             <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Head Volleyball Coach</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">Chesterton Academy</p>
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Volunteer Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Student Assistant Junior High Volleyball Coach</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">Dominion Academy of Dayton</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Direct team practices and instruct student-athletes in technical execution, game strategy, and sportsmanship. Oversee match-day court operations, tactical substitutions, and player leadership development.
+                                    Organized practice sessions, court preparation, and equipment management for student-athletes. Motivated and supported athletes through training drills, monitored player safety, and advised coaching staff on team strategy.
                                 </p>
                             </div>
 
-                            <!-- Founding Marketing & Outreach - BridgeUSA Chapter -->
-                            <div>
-                                <h4 class="text-lg font-extrabold uppercase tracking-wider mb-0.5 text-brand-blue">Founding Outreach Lead</h4>
-                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5 whitespace-nowrap">BridgeUSA Chapter</p>
+                            <!-- Athletic Director Student Assistant -->
+                            <div class="pt-5 border-t border-brand-blue/15">
+                                <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Volunteer Experience</span>
+                                <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Athletic Director Student Assistant</h4>
+                                <p class="text-[11px] xl:text-xs font-bold uppercase tracking-wider text-brand-blue mb-2.5">Dominion Academy of Dayton</p>
                                 <p class="text-xs sm:text-sm leading-relaxed opacity-85 font-sans">
-                                    Co-launched the collegiate chapter at Capital University to establish its brand identity and student recruitment pipeline. Produced inaugural brand templates and digital outreach collateral for campus forums.
+                                    Quickly learned new administrative procedures and applied them to daily operations, enhancing office productivity. Delivered administrative support and maintained accurate athletic department records.
                                 </p>
                             </div>
                         </div>
@@ -735,7 +794,23 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section id="portfolio" class="py-32 bg-brand-blue text-cream" x-data="{ filter: 'all', activeModal: null }" @filter-portfolio.window="filter = $event.detail; $nextTick(() => { document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); })">
+    <section id="portfolio" 
+             class="py-32 bg-brand-blue text-cream" 
+             x-data="{ filter: 'all', activeModal: null }" 
+             x-effect="
+                if (activeModal) {
+                    if ($refs.detailModal && !$refs.detailModal.open) {
+                        $refs.detailModal.showModal();
+                        document.body.classList.add('overflow-hidden');
+                    }
+                } else {
+                    if ($refs.detailModal && $refs.detailModal.open) {
+                        $refs.detailModal.close();
+                        document.body.classList.remove('overflow-hidden');
+                    }
+                }
+             "
+             @filter-portfolio.window="filter = $event.detail; $nextTick(() => { document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' }); })">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="reveal-on-scroll text-6xl md:text-8xl font-serif font-bold text-center mb-12 leading-none">Featured<br>Projects</h2>
             
@@ -787,38 +862,38 @@
                     </div>
                 </article>
 
-                <!-- In Progress: Wright Brothers Day Campaign (Events, Design & Strategy) -->
+                <!-- Wright Brothers Day Campaign (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: null, title: 'Wright Brothers Day Campaign', tag: 'Integrated Campus Campaign', status: 'In Progress', desc: '360° multi-channel marketing campaign celebrating aviation heritage across Wright State University. Encompasses campus-wide promotional collateral, digital signage rollout, student engagement exhibits, and promotional impact analytics.' }"
+                    <div @click="activeModal = { 
+                            img: 'images/wbd-campaign-poster.jpg', 
+                            alt: 'Wright Brothers Day Take Flight Campaign Poster and Case Study Presentation', 
+                            title: 'Wright Brothers Day Campaign', 
+                            tag: 'Integrated Campus Campaign', 
+                            desc: 'Comprehensive multi-channel marketing campaign celebrating aviation heritage across Wright State University, organized by the American Marketing Association chapter. Encompassed interactive flight simulator exhibits, digital display rollout, promotional print collateral, and cross-platform analytics (1,740+ total impressions).', 
+                            link: 'WBD_Presentation_Marketing_Gals.pdf', 
+                            linkText: 'View Full Presentation (PDF)' 
+                         }"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between relative">
                         <div>
-                            <div class="h-80 bg-stone-50/80 border-2 border-dashed border-brand-blue/15 rounded-sm mb-4 p-6 flex flex-col items-center justify-center text-center relative group-hover:border-brand-blue/30 group-hover:bg-brand-blue/5 transition-all">
-                                <div class="w-14 h-14 rounded-full bg-brand-blue/10 flex items-center justify-center mb-3 text-brand-blue">
-                                    <svg class="w-7 h-7 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 110-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 01-1.44-4.282m3.102.069a18.03 18.03 0 01-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 018.835 2.535M10.34 6.66a23.847 23.847 0 008.835-2.535m0 0A23.74 23.74 0 0018.795 3m.38 1.125a23.91 23.91 0 011.01 5.375m-.185 8.125c.063-.593.11-1.192.14-1.798m-.14 1.798a23.908 23.908 0 01-1.01 5.375" />
-                                    </svg>
-                                </div>
-                                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest bg-amber-100 text-amber-900 border border-amber-200 mb-2">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
-                                    In Progress
-                                </span>
-                                <p class="text-xs uppercase tracking-widest font-extrabold text-brand-blue">Case Study Underway</p>
-                                <p class="text-[11px] text-brand-blue/60 mt-1 max-w-[200px]">Campaign documentation coming soon</p>
+                            <div class="h-80 bg-stone-900 overflow-hidden mb-4 p-1 flex items-center justify-center relative rounded-sm">
+                                <img src="images/wbd-campaign-poster.jpg" alt="Wright Brothers Day Campaign Poster" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700">
+                                <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors"></div>
+                                <div class="absolute bottom-3 right-3 bg-brand-blue/90 text-cream text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Case Study</div>
                             </div>
                             <div class="flex items-center justify-between mb-1">
                                 <p class="text-brand-blue text-xs uppercase tracking-widest font-bold opacity-70">Integrated Campus Campaign</p>
-                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-amber-800 bg-amber-100 px-2 py-0.5 rounded">In Progress</span>
+                                <span class="text-[10px] font-extrabold uppercase tracking-wider text-brand-blue bg-brand-blue/10 px-2 py-0.5 rounded">Completed</span>
                             </div>
                             <h3 class="font-serif text-2xl font-bold text-brand-blue mt-1">Wright Brothers Day</h3>
                             <p class="text-brand-blue/80 text-sm mt-2 font-sans leading-relaxed">
-                                Multi-channel campus awareness campaign featuring experiential exhibits, signage, print collateral, and digital outreach.
+                                Multi-channel campus heritage campaign featuring flight simulator exhibits, print collateral, and digital outreach.
                             </p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-brand-blue/10 flex items-center justify-between">
                             <span class="text-xs font-bold uppercase tracking-wider text-brand-blue group-hover:opacity-70 transition-opacity">
-                                View Details &rarr;
+                                View Presentation &rarr;
                             </span>
-                            <span class="text-[10px] font-bold uppercase tracking-widest text-brand-blue/60">Coming Soon</span>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-brand-blue/60">PDF Presentation</span>
                         </div>
                     </div>
                 </article>
@@ -1294,28 +1369,23 @@
             </div>
         </div>
 
-        <!-- Lightbox / Detail Modal -->
-        <div x-show="activeModal" 
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0"
-             x-transition:enter-end="opacity-100"
-             x-transition:leave="transition ease-in duration-200"
-             x-transition:leave-start="opacity-100"
-             x-transition:leave-end="opacity-0"
-             @keydown.escape.window="activeModal = null"
-             class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-sm"
-             style="display: none;">
+        <!-- Native HTML5 Lightbox / Detail Modal Dialog -->
+        <dialog x-ref="detailModal"
+                id="project-detail-dialog"
+                aria-labelledby="dialog-title"
+                aria-describedby="dialog-desc"
+                @close="activeModal = null; document.body.classList.remove('overflow-hidden')"
+                @click="const r = $el.getBoundingClientRect(); if ($event.clientX < r.left || $event.clientX > r.right || $event.clientY < r.top || $event.clientY > r.bottom) { $el.close(); }"
+                class="project-dialog m-auto p-0 bg-transparent border-0 max-w-3xl w-[calc(100%-2rem)] sm:w-full max-h-[92vh] outline-none shadow-2xl">
             
-            <!-- Backdrop Click -->
-            <div class="absolute inset-0" @click="activeModal = null"></div>
-
-            <!-- Modal Content -->
-            <div class="relative bg-cream text-brand-blue max-w-3xl w-full max-h-[92vh] overflow-y-auto shadow-2xl z-10 p-6 sm:p-8 border-4 border-white"
-                 @click.stop>
+            <!-- Modal Content Box -->
+            <div class="relative bg-cream text-brand-blue w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 border-4 border-white shadow-2xl">
                 
-                <button @click="activeModal = null" 
-                        class="absolute top-4 right-4 text-brand-blue/60 hover:text-brand-blue p-2 text-2xl font-bold leading-none focus:outline-none transition-colors"
-                        aria-label="Close modal">
+                <!-- Close Button -->
+                <button type="button" 
+                        @click="$refs.detailModal.close()" 
+                        class="absolute top-4 right-4 text-brand-blue/60 hover:text-brand-blue p-2 text-2xl font-bold leading-none focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue transition-colors cursor-pointer"
+                        aria-label="Close project details modal">
                     &times;
                 </button>
 
@@ -1327,14 +1397,14 @@
                     </template>
 
                     <template x-if="!activeModal?.img">
-                        <div class="w-full py-12 px-6 flex flex-col items-center justify-center bg-brand-blue/5 border-2 border-dashed border-brand-blue/20 rounded-xl mb-6 text-center">
-                            <div class="w-12 h-12 rounded-full bg-brand-blue/10 flex items-center justify-center mb-3 text-brand-blue">
+                        <div class="w-full py-12 px-6 flex flex-col items-center justify-center bg-brand-blue/5 border-2 border-dashed border-brand-blue/20 mb-6 text-center">
+                            <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center mb-3 text-brand-blue">
                                 <svg class="w-6 h-6 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded text-xs font-bold uppercase tracking-widest bg-amber-100 text-amber-900 border border-amber-200 mb-2">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest bg-amber-100 text-amber-900 border border-amber-200 mb-2">
+                                <span class="w-1.5 h-1.5 bg-amber-600 animate-pulse"></span>
                                 In Progress
                             </span>
                             <p class="text-xs uppercase tracking-widest font-extrabold text-brand-blue/70">Visual Assets &amp; Documentation In Production</p>
@@ -1342,31 +1412,31 @@
                     </template>
 
                     <div class="flex flex-wrap items-center justify-center gap-2 mb-2">
-                        <span class="text-xs uppercase tracking-widest font-bold text-brand-blue px-3 py-1 bg-brand-blue/10 rounded" x-text="activeModal?.tag"></span>
+                        <span class="text-xs uppercase tracking-widest font-bold text-brand-blue px-3 py-1 bg-brand-blue/10" x-text="activeModal?.tag"></span>
                         <template x-if="activeModal?.status">
-                            <span class="text-xs uppercase tracking-widest font-bold text-amber-900 px-3 py-1 bg-amber-100 border border-amber-200 rounded flex items-center gap-1.5">
-                                <span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span>
+                            <span class="text-xs uppercase tracking-widest font-bold text-amber-900 px-3 py-1 bg-amber-100 border border-amber-200 flex items-center gap-1.5">
+                                <span class="w-1.5 h-1.5 bg-amber-600 animate-pulse"></span>
                                 <span x-text="activeModal?.status"></span>
                             </span>
                         </template>
                     </div>
-                    <h3 class="font-serif text-3xl font-bold text-brand-blue text-center mb-3" x-text="activeModal?.title"></h3>
-                    <p class="text-brand-blue/80 text-base text-center max-w-xl leading-relaxed mb-6 font-sans" x-text="activeModal?.desc"></p>
+                    <h3 id="dialog-title" class="font-serif text-3xl font-bold text-brand-blue text-center mb-3" x-text="activeModal?.title"></h3>
+                    <p id="dialog-desc" class="text-brand-blue/80 text-base text-center max-w-xl leading-relaxed mb-6 font-sans" x-text="activeModal?.desc"></p>
 
                     <template x-if="activeModal?.link">
-                        <a :href="activeModal?.link" target="_blank" class="px-6 py-2.5 bg-brand-blue text-cream text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors inline-flex items-center gap-2">
+                        <a :href="activeModal?.link" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-brand-blue text-cream text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors inline-flex items-center gap-2">
                             <span x-text="activeModal?.linkText || 'Open Link'"></span> &rarr;
                         </a>
                     </template>
                     <template x-if="!activeModal?.link && activeModal?.status">
                         <div class="px-6 py-2.5 bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-amber-600 animate-pulse"></span>
+                            <span class="w-2 h-2 bg-amber-600 animate-pulse"></span>
                             <span>Full Case Study Releasing Soon</span>
                         </div>
                     </template>
                 </div>
             </div>
-        </div>
+        </dialog>
     </section>
 
     <!-- Footer / Contact -->
