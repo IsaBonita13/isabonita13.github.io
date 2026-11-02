@@ -295,36 +295,44 @@
 
 
     <!-- Skills & Expertise Section -->
-    <section id="skills" class="py-28 md:py-36 bg-brand-blue text-cream text-center">
+    <section id="skills" x-data class="py-28 md:py-36 bg-brand-blue text-cream text-center scroll-mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="reveal-on-scroll text-6xl md:text-8xl font-serif font-bold mb-6 leading-none">Skills &<br>Expertise</h2>
             <p class="font-sans text-lg md:text-xl uppercase tracking-[0.2em] mb-12 opacity-90">Areas of Focus</p>
             
             <!-- 4 Skill Buttons -->
             <div class="flex flex-wrap justify-center gap-4 sm:gap-6 max-w-4xl mx-auto">
-                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'video' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                <a href="#portfolio"
+                   @click.prevent="window.filterPortfolio('video')"
+                   onclick="event.preventDefault(); window.filterPortfolio('video');"
+                   class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 inline-flex items-center gap-3 hover:scale-105 shadow-md cursor-pointer">
                     <span>Content Creation &amp; Video</span>
                     <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                </button>
+                </a>
 
-                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'design' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                <a href="#portfolio"
+                   @click.prevent="window.filterPortfolio('design')"
+                   onclick="event.preventDefault(); window.filterPortfolio('design');"
+                   class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 inline-flex items-center gap-3 hover:scale-105 shadow-md cursor-pointer">
                     <span>Graphic &amp; Print Design</span>
                     <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                </button>
+                </a>
 
-                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'events' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                <a href="#portfolio"
+                   @click.prevent="window.filterPortfolio('events')"
+                   onclick="event.preventDefault(); window.filterPortfolio('events');"
+                   class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 inline-flex items-center gap-3 hover:scale-105 shadow-md cursor-pointer">
                     <span>Event Planning &amp; Management</span>
                     <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                </button>
+                </a>
 
-                <button @click="window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: 'strategy' })); document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' })"
-                        class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 flex items-center gap-3 hover:scale-105 shadow-md">
+                <a href="#portfolio"
+                   @click.prevent="window.filterPortfolio('strategy')"
+                   onclick="event.preventDefault(); window.filterPortfolio('strategy');"
+                   class="group px-7 py-4 border-2 border-cream bg-transparent hover:bg-cream text-cream hover:text-brand-blue font-sans text-sm sm:text-base font-bold uppercase tracking-widest rounded-none transition-all duration-300 inline-flex items-center gap-3 hover:scale-105 shadow-md cursor-pointer">
                     <span>Digital Strategy &amp; Outreach</span>
                     <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
-                </button>
+                </a>
             </div>
 
             <p class="font-sans text-xs uppercase tracking-widest text-cream/60 mt-10">
@@ -798,7 +806,7 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" 
-             class="py-32 bg-brand-blue text-cream" 
+             class="py-32 bg-brand-blue text-cream scroll-mt-16" 
              x-data="{ filter: 'all', activeModal: null }" 
              x-effect="
                 if (activeModal) {

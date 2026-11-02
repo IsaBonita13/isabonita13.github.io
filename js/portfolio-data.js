@@ -264,3 +264,15 @@ window.portfolioProjects = {
         results: 'Displayed on widescreen digital monitors across Wright State academic buildings, maximizing multi-disciplinary reach and registrations.'
     }
 };
+
+/**
+ * Filter portfolio section and smoothly scroll to it
+ * @param {string} category - 'all' | 'video' | 'design' | 'events' | 'strategy'
+ */
+window.filterPortfolio = function(category) {
+    window.dispatchEvent(new CustomEvent('filter-portfolio', { detail: category }));
+    const portfolioEl = document.getElementById('portfolio');
+    if (portfolioEl) {
+        portfolioEl.scrollIntoView({ behavior: 'smooth' });
+    }
+};
