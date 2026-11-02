@@ -32,6 +32,9 @@
         }
     </script>
 
+    <!-- Portfolio Project Data Store -->
+    <script src="js/portfolio-data.js"></script>
+
     <!-- Alpine.js for Interactions -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
 
@@ -267,7 +270,7 @@
                                 Where many see digital marketing and event production as separate worlds, I build at their intersection. The most meaningful brand experiences don’t stop at the screen. They spark curiosity online, translate into memorable moments in person, and cultivate lasting community long after the final applause.
                             </p>
                             <p>
-                                My background bridges data-informed digital strategy with high-stakes operational execution. Whether directing on-site operations and Cvent registration workflows for 10+ corporate conferences with 2,000+ attendees—delivering process improvements that resolved errors and generated $10,000 in operational cost savings—or optimizing luxury jewelry e-commerce platforms with technical SEO and responsive UX, I bring calm focus and measurable results to fast-paced environments.
+                                My background bridges data-informed digital strategy with high-stakes operational execution. Whether directing on-site operations and Cvent registration workflows for 10+ corporate conferences with 2,000+ attendees, delivering process improvements that resolved errors and generated $10,000 in operational cost savings, or optimizing luxury jewelry e-commerce platforms with technical SEO and responsive UX, I bring calm focus and measurable results to fast-paced environments.
                             </p>
                             <p>
                                 As President of Wright State University's American Marketing Association chapter and a two-time Emerging Marketing Leaders scholarship recipient, I lead with strategic vision, empathy, and measurable impact. Having secured $1,750 in corporate sponsorships and scaled event attendance by nearly 500%, I thrive at the helm of cross-functional teams launching multi-channel campaigns that move people to action.
@@ -665,7 +668,7 @@
                                 </p>
                             </div>
 
-                            <!-- Digital Intern – H&A Fine Jewelry -->
+                            <!-- Digital Intern - H&A Fine Jewelry -->
                             <div class="pt-5 border-t border-brand-blue/15">
                                 <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Relevant Experience</span>
                                 <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Digital Intern</h4>
@@ -706,7 +709,7 @@
                         <h3 class="text-6xl sm:text-7xl font-serif font-bold opacity-20 mb-6 leading-none">2025</h3>
                         <div class="space-y-7">
                             <!-- WORK EXPERIENCE (ON TOP) -->
-                            <!-- Marketing Intern – Nuwa Marketing -->
+                            <!-- Marketing Intern - Nuwa Marketing -->
                             <div>
                                 <span class="inline-block px-2 py-0.5 bg-brand-blue/10 text-brand-blue text-[10px] font-extrabold uppercase tracking-widest mb-1.5">Relevant Experience</span>
                                 <h4 class="text-lg font-extrabold uppercase tracking-wider text-brand-blue">Marketing Intern</h4>
@@ -828,7 +831,7 @@
                 
                 <!-- In Progress: H&A Fine Jewelry Website (Strategy & Design) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: null, title: 'H&A Fine Jewelry Website', tag: 'Luxury E-Commerce & SEO', status: 'In Progress', desc: 'Comprehensive luxury e-commerce platform overhaul and digital marketing strategy. Focuses on high-ticket fine jewelry catalog integration, responsive mobile user experience, automated client retention funnels, and organic search engine optimization (SEO).' }"
+                    <div @click="activeModal = portfolioProjects['ha-jewelry']"
                          class="polaroid rotate-[-1.5deg] block w-full group cursor-pointer flex flex-col justify-between relative">
                         <div>
                             <div class="h-80 bg-stone-50/80 border-2 border-dashed border-brand-blue/15 rounded-sm mb-4 p-6 flex flex-col items-center justify-center text-center relative group-hover:border-brand-blue/30 group-hover:bg-brand-blue/5 transition-all">
@@ -864,15 +867,7 @@
 
                 <!-- Wright Brothers Day Campaign (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { 
-                            img: 'images/wbd-campaign-poster.jpg', 
-                            alt: 'Wright Brothers Day Take Flight Campaign Poster and Case Study Presentation', 
-                            title: 'Wright Brothers Day Campaign', 
-                            tag: 'Integrated Campus Campaign', 
-                            desc: 'Comprehensive multi-channel marketing campaign celebrating aviation heritage across Wright State University, organized by the American Marketing Association chapter. Encompassed interactive flight simulator exhibits, digital display rollout, promotional print collateral, and cross-platform analytics (1,740+ total impressions).', 
-                            link: 'WBD_Presentation_Marketing_Gals.pdf', 
-                            linkText: 'View Full Presentation (PDF)' 
-                         }"
+                    <div @click="activeModal = portfolioProjects['wbd-campaign']"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between relative">
                         <div>
                             <div class="h-80 bg-stone-900 overflow-hidden mb-4 p-1 flex items-center justify-center relative rounded-sm">
@@ -900,7 +895,7 @@
 
                 <!-- Item 1: Pop Mart NYFW (Video & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'video' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Popmartnyfw.PNG', alt: 'Pop Mart New York Fashion Week video reel', title: 'Pop Mart NYFW', tag: 'Video Reel', desc: 'Fast-paced social media compilation featuring influencers styling collectible designer art toys during New York Fashion Week.', link: 'https://www.instagram.com/p/DPEhl8dEda3/', linkText: 'Watch on Instagram' }"
+                    <div @click="activeModal = portfolioProjects['popmart-nyfw']"
                          class="polaroid rotate-[-1deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-stone-900 overflow-hidden mb-4 p-1 flex items-center justify-center relative rounded-sm">
@@ -924,7 +919,7 @@
 
                 <!-- Item 2: Halloween Highlight (Video & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'video' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/halloweenwithpopmart.PNG', alt: 'Halloween Pop Mart video reel', title: 'Halloween Highlight', tag: 'Video Reel', desc: 'Seasonal holiday reel highlighting influencer collaborations and the limited Pop Mart Halloween designer toy series.', link: 'https://www.instagram.com/p/DQfKklTErJK/', linkText: 'Watch on Instagram' }"
+                    <div @click="activeModal = portfolioProjects['popmart-halloween']"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-stone-900 overflow-hidden mb-4 p-1 flex items-center justify-center relative rounded-sm">
@@ -948,13 +943,13 @@
 
                 <!-- Item 3: Volleyball Reel (Video) -->
                 <article x-show="filter === 'all' || filter === 'video'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'https://img.youtube.com/vi/KRivALXkydI/hqdefault.jpg', alt: 'Volleyball Highlight Reel thumbnail', title: 'Volleyball Reel', tag: 'Sports Videography', desc: 'Dynamic, high-tempo athletic highlight video capturing key collegiate volleyball game action with fast-paced cuts.', link: 'https://www.youtube.com/watch?v=KRivALXkydI', linkText: 'Watch on YouTube' }"
+                    <div @click="activeModal = portfolioProjects['volleyball-reel']"
                          class="polaroid rotate-[-1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-stone-900 overflow-hidden mb-4 relative rounded-sm">
                                 <img src="https://img.youtube.com/vi/KRivALXkydI/hqdefault.jpg" alt="Volleyball Highlight Reel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 <div class="absolute inset-0 bg-black/15 group-hover:bg-transparent transition-colors"></div>
-                                <div class="absolute bottom-3 right-3 bg-red-600 text-white text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">YouTube</div>
+                                <div class="absolute bottom-3 right-3 bg-brand-blue/90 text-cream text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded">Reel</div>
                             </div>
                             <p class="text-brand-blue text-xs uppercase tracking-widest text-center font-bold opacity-70">Sports Videography</p>
                             <h3 class="font-serif text-2xl font-bold text-brand-blue text-center mt-1">Volleyball Reel</h3>
@@ -963,16 +958,16 @@
                             </p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-brand-blue/10 text-center">
-                            <a href="https://www.youtube.com/watch?v=KRivALXkydI" target="_blank" @click.stop class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-brand-blue hover:text-black transition-colors">
-                                Watch on YouTube &rarr;
-                            </a>
+                            <span class="text-xs font-bold uppercase tracking-wider text-brand-blue/60 group-hover:text-brand-blue transition-colors">
+                                View Details &rarr;
+                            </span>
                         </div>
                     </div>
                 </article>
 
                 <!-- Item 4: Roses & Lillies (Graphic Design) -->
                 <article x-show="filter === 'all' || filter === 'design'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Logo RL-1.png', alt: 'Roses & Lillies brand logo', title: 'Roses & Lillies', tag: 'Brand Identity & Logo', desc: 'Sophisticated logo design created in Adobe Illustrator, incorporating delicate botanical line art with Marian symbolism for an apparel boutique.' }"
+                    <div @click="activeModal = portfolioProjects['roses-and-lillies']"
                          class="polaroid rotate-[2.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-stone-50 overflow-hidden mb-4 p-6 flex items-center justify-center relative rounded-sm border border-stone-200/50">
@@ -981,7 +976,7 @@
                             <p class="text-brand-blue text-xs uppercase tracking-widest text-center font-bold opacity-70">Brand Identity</p>
                             <h3 class="font-serif text-2xl font-bold text-brand-blue text-center mt-1">Roses &amp; Lillies</h3>
                             <p class="text-brand-blue/80 text-sm text-center mt-2 font-sans leading-relaxed">
-                                Elegant brand identity crafted in Adobe Illustrator, blending floral illustration with Marian symbolism.
+                                Elegant brand identity crafted in Adobe Express, blending floral illustration with classical typography.
                             </p>
                         </div>
                         <div class="mt-4 pt-3 border-t border-brand-blue/10 text-center">
@@ -992,16 +987,16 @@
                     </div>
                 </article>
 
-                <!-- Item 5: Isa Bonita (Graphic Design) -->
+                <!-- Item 5: IsaBonita (Graphic Design) -->
                 <article x-show="filter === 'all' || filter === 'design'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/22W7_F25.png', alt: 'Isa Bonita neon pineapple visual identity', title: 'Isa Bonita Identity', tag: 'Personal Branding', desc: 'Vibrant, neon-inspired personal branding and visual identity featuring playful tropical motifs, neon glow effects, and custom script typography.' }"
+                    <div @click="activeModal = portfolioProjects['isa-bonita']"
                          class="polaroid rotate-[-2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-[#d9eefb]/40 overflow-hidden mb-4 p-6 flex items-center justify-center relative rounded-sm border border-sky-100">
-                                <img src="images/22W7_F25.png" alt="Isa Bonita Brand Logo" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
+                                <img src="images/22W7_F25.png" alt="IsaBonita Brand Logo" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700">
                             </div>
                             <p class="text-brand-blue text-xs uppercase tracking-widest text-center font-bold opacity-70">Personal Branding</p>
-                            <h3 class="font-serif text-2xl font-bold text-brand-blue text-center mt-1">Isa Bonita Identity</h3>
+                            <h3 class="font-serif text-2xl font-bold text-brand-blue text-center mt-1">IsaBonita Identity</h3>
                             <p class="text-brand-blue/80 text-sm text-center mt-2 font-sans leading-relaxed">
                                 Vibrant, neon-inspired personal brand identity featuring custom tropical illustration and playful typography.
                             </p>
@@ -1016,7 +1011,7 @@
 
                 <!-- Item 6: Cozy Cottage (Graphic Design) -->
                 <article x-show="filter === 'all' || filter === 'design'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Untitled.png', alt: 'Cozy Cottage Clothing mascot and brand logo', title: 'Cozy Cottage Clothing', tag: 'Mascot & Logo Design', desc: 'Charming illustrated panda mascot and puffy cloud typography created for a youth-oriented comfortable clothing brand.' }"
+                    <div @click="activeModal = portfolioProjects['cozy-cottage']"
                          class="polaroid rotate-[1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-stone-50 overflow-hidden mb-4 p-6 flex items-center justify-center relative rounded-sm border border-stone-200/50">
@@ -1038,7 +1033,7 @@
 
                 <!-- Item 7: Practical Psychology Vol. 2 (Graphic Design) -->
                 <article x-show="filter === 'all' || filter === 'design'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/B51a_I58-2.png', alt: 'Practical Psychology Vol. 2 book cover design', title: 'Practical Psychology Vol. 2', tag: 'Book Cover & Editorial', desc: 'Sophisticated editorial book cover composition combining ornate vintage engraved borders with a vivid brain-in-bell-jar conceptual illustration.' }"
+                    <div @click="activeModal = portfolioProjects['practical-psychology']"
                          class="polaroid rotate-[-2.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-[#122e28] overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm">
@@ -1060,7 +1055,7 @@
 
                 <!-- Item 8: Image of God Apparel (Graphic Design) -->
                 <article x-show="filter === 'all' || filter === 'design'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/My project-3.png', alt: 'Made in the Image of God apparel design mockup', title: 'Image of God Apparel', tag: 'Apparel & Product Design', desc: 'Modern scripture-inspired streetwear t-shirt graphics with bold typography and Genesis 1:27 branding designed for O.L.G.A Studios.' }"
+                    <div @click="activeModal = portfolioProjects['image-of-god']"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-pink-50/60 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-pink-100">
@@ -1082,7 +1077,7 @@
 
                 <!-- Item 9: Pro-Life Apparel (Graphic Design) -->
                 <article x-show="filter === 'all' || filter === 'design'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/My project-4.png', alt: 'Pro-Life apparel design graphic for OLGA Studios', title: 'Pro-Life Apparel Concept', tag: 'Apparel & Product Design', desc: 'Minimalist mission-aligned merchandise graphic featuring delicate hand-drawn line art and clean collegiate typography for O.L.G.A Studios.' }"
+                    <div @click="activeModal = portfolioProjects['pro-life-apparel']"
                          class="polaroid rotate-[-1deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-pink-50/60 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-pink-100">
@@ -1104,7 +1099,7 @@
 
                 <!-- Item 10: Diaper Drive (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/blue playful toy drive flyer.png', alt: 'Elizabeth New Life Center Diaper Drive campaign flyer', title: 'Diaper Drive Campaign', tag: 'Campaign Flyer', desc: 'Playful, high-visibility promotional flyer designed for Elizabeth New Life Center community collection drive with clear action steps and drop-off instructions.' }"
+                    <div @click="activeModal = portfolioProjects['diaper-drive']"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-sky-50 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-sky-100">
@@ -1126,7 +1121,7 @@
 
                 <!-- Item 11: Fall Fest (Events & Design) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/My project (2).png', alt: 'Immaculate Heart Co-op Fall Fest promotional flyer', title: 'Fall Fest Promotion', tag: 'Event Promotion', desc: 'Festive autumn community event poster designed for Immaculate Heart Co-op, featuring bold seasonal orange geometry and expressive pumpkin illustrations.' }"
+                    <div @click="activeModal = portfolioProjects['fall-fest']"
                          class="polaroid rotate-[-2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-amber-50 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-amber-100">
@@ -1148,7 +1143,7 @@
 
                 <!-- Item 12: Casino Night (Events & Design) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Red & White Casino Night Illustrated Party Invitation.png', alt: 'Monte Carlo Casino Night party invitation flyer', title: 'Monte Carlo Casino Night', tag: 'Event Invitation', desc: 'Hand-illustrated themed party invitation featuring stylized queen of hearts playing cards, gold foil speckle accents, and event details for a community fundraiser.' }"
+                    <div @click="activeModal = portfolioProjects['casino-night']"
                          class="polaroid rotate-[1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-stone-900 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm">
@@ -1170,7 +1165,7 @@
 
                 <!-- Item 13: Student Council Movie Night (Events & Design) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/club flyer.png', alt: 'Student Council Movie Night flyer with popcorn', title: 'Student Council Movie Night', tag: 'Campus Event Flyer', desc: 'Retro popcorn-inspired campus event flyer created for an on-campus student council film screening of Night at the Museum 2.' }"
+                    <div @click="activeModal = portfolioProjects['movie-night']"
                          class="polaroid rotate-[-2.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-[#ea735c]/15 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-orange-100">
@@ -1192,7 +1187,7 @@
 
                 <!-- Item 14: School Spirit Days (Events & Design) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Spirit Days.png', alt: 'School Spirit Days year-long calendar poster with sticky notes', title: 'School Spirit Days Calendar', tag: 'Promotional Schedule', desc: 'Creative sticky-note calendar poster promoting year-round school spirit dress-up days, themes, and community participation from September through May.' }"
+                    <div @click="activeModal = portfolioProjects['spirit-days']"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-[#2b1055]/10 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-purple-100">
@@ -1214,7 +1209,7 @@
 
                 <!-- Item 15: Cross Country Senior Night (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Senior Grad instagram story.png', alt: 'Cross Country Senior Night Instagram Story graphic', title: 'Cross Country Senior Night', tag: 'Social Media Story', desc: 'High-contrast red and black Instagram Story layout combining varsity cross-country team photography with bold typography to honor graduating seniors.' }"
+                    <div @click="activeModal = portfolioProjects['xc-senior-night']"
                          class="polaroid rotate-[-1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-[#c00000]/10 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-red-100">
@@ -1236,7 +1231,7 @@
 
                 <!-- Item 16: Soccer Senior Night (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/ig story-1.png', alt: 'Soccer Senior Night athletic Instagram Story announcement', title: 'Soccer Senior Night', tag: 'Social Media Story', desc: 'Dynamic athletic promotion story graphic featuring masked photo lettering and match details designed for team social media channels.' }"
+                    <div @click="activeModal = portfolioProjects['soccer-senior-night']"
                          class="polaroid rotate-[2.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-[#b80000]/10 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-red-100">
@@ -1258,7 +1253,7 @@
 
                 <!-- Item 17: AMA End of Year Bash (Events & Design) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/End%20of%20year%20bash%20flyer.png', alt: 'AMA End of Year Bash pool-themed party flyer', title: 'AMA End of Year Bash', tag: 'Campus Event Flyer', desc: 'High-energy summer poolside flyer created for the American Marketing Association at Wright State University, promoting the chapter\'s year-end celebration featuring alumni panelists, officer announcements, and member networking.' }"
+                    <div @click="activeModal = portfolioProjects['ama-bash']"
                          class="polaroid rotate-[-2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-teal-50/60 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-teal-100">
@@ -1280,7 +1275,7 @@
 
                 <!-- Item 18: Marketing In Motion (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Marketing%20In%20Motion.png', alt: 'Marketing In Motion keynote event flyer featuring Greg Uland', title: 'Marketing In Motion', tag: 'Executive Keynote Poster', desc: 'Corporate executive speaker promotional poster designed for the American Marketing Association at Wright State University, promoting an industry keynote by Reynolds & Reynolds VP of Marketing Greg Uland.' }"
+                    <div @click="activeModal = portfolioProjects['marketing-in-motion']"
                          class="polaroid rotate-[1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-slate-900/5 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-slate-200">
@@ -1302,7 +1297,7 @@
 
                 <!-- Item 19: Marketing Strategy Workshop (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Marketing%20Strategy%20Workshop.png', alt: 'Marketing Strategy Workshop banner featuring Devon Stinson', title: 'Marketing Strategy Workshop', tag: 'Workshop Promotional Graphic', desc: 'Creative professional workshop promotional graphic designed for the Wright State AMA chapter, featuring guest marketing strategist Devon Stinson with bold colorful brushwork, hand-drawn accents, and clean event details.' }"
+                    <div @click="activeModal = portfolioProjects['strategy-workshop']"
                          class="polaroid rotate-[-1deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-amber-50/50 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-amber-100">
@@ -1324,7 +1319,7 @@
 
                 <!-- Item 20: Speak with Impact Workshop (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Toastmaster%20Workshop-2.png', alt: 'Speak with Impact Toastmasters workshop event flyer', title: 'Speak with Impact Workshop', tag: 'Multi-Org Campus Event', desc: 'Collaborative public speaking and professional presence event flyer designed for a joint campus initiative hosted by Wright State AMA, Entrepreneurship Club, ABBS, Analytics Club, and Career Hub.' }"
+                    <div @click="activeModal = portfolioProjects['speak-with-impact']"
                          class="polaroid rotate-[2deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-emerald-950/10 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-emerald-100">
@@ -1346,7 +1341,7 @@
 
                 <!-- Item 21: Speak with Impact Digital Signage (Events, Design & Strategy) -->
                 <article x-show="filter === 'all' || filter === 'design' || filter === 'events' || filter === 'strategy'" x-transition class="flex justify-center">
-                    <div @click="activeModal = { img: 'images/Toastmaster%20Workshop-6%20(2)_compressed.png', alt: 'Speak with Impact widescreen digital display screen graphic', title: 'Speak with Impact Signage', tag: 'Digital Signage & Display', desc: 'High-resolution 16:9 widescreen digital display graphic designed for campus monitors and student center screens across Wright State University, highlighting keynote speakers, sponsors, and registration info.' }"
+                    <div @click="activeModal = portfolioProjects['impact-signage']"
                          class="polaroid rotate-[-1.5deg] block w-full group cursor-pointer flex flex-col justify-between">
                         <div>
                             <div class="h-80 bg-slate-100 overflow-hidden mb-4 p-2 flex items-center justify-center relative rounded-sm border border-slate-200">
@@ -1370,16 +1365,17 @@
         </div>
 
         <!-- Native HTML5 Lightbox / Detail Modal Dialog -->
+        <!-- Native HTML5 Lightbox / Detail Modal Dialog -->
         <dialog x-ref="detailModal"
                 id="project-detail-dialog"
                 aria-labelledby="dialog-title"
                 aria-describedby="dialog-desc"
                 @close="activeModal = null; document.body.classList.remove('overflow-hidden')"
                 @click="const r = $el.getBoundingClientRect(); if ($event.clientX < r.left || $event.clientX > r.right || $event.clientY < r.top || $event.clientY > r.bottom) { $el.close(); }"
-                class="project-dialog m-auto p-0 bg-transparent border-0 max-w-3xl w-[calc(100%-2rem)] sm:w-full max-h-[92vh] outline-none shadow-2xl">
+                class="project-dialog m-auto p-0 bg-transparent border-0 max-w-4xl w-[calc(100%-2rem)] sm:w-full max-h-[92vh] outline-none shadow-2xl">
             
             <!-- Modal Content Box -->
-            <div class="relative bg-cream text-brand-blue w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 border-4 border-white shadow-2xl">
+            <div class="relative bg-cream text-brand-blue w-full max-h-[92vh] overflow-y-auto p-6 sm:p-8 md:p-10 border-4 border-white shadow-2xl">
                 
                 <!-- Close Button -->
                 <button type="button" 
@@ -1391,23 +1387,23 @@
 
                 <div class="flex flex-col items-center">
                     <template x-if="activeModal?.img">
-                        <div class="max-h-[58vh] w-full flex items-center justify-center bg-white shadow-inner mb-6 p-4 overflow-hidden border border-brand-blue/10">
-                            <img :src="activeModal?.img" :alt="activeModal?.alt || activeModal?.title" class="max-h-[54vh] max-w-full object-contain">
+                        <div class="max-h-[50vh] w-full flex items-center justify-center bg-white shadow-inner mb-6 p-4 overflow-hidden border border-brand-blue/10">
+                            <img :src="activeModal?.img" :alt="activeModal?.alt || activeModal?.title" class="max-h-[46vh] max-w-full object-contain">
                         </div>
                     </template>
 
                     <template x-if="!activeModal?.img">
-                        <div class="w-full py-12 px-6 flex flex-col items-center justify-center bg-brand-blue/5 border-2 border-dashed border-brand-blue/20 mb-6 text-center">
+                        <div class="w-full py-10 px-6 flex flex-col items-center justify-center bg-brand-blue/5 border-2 border-dashed border-brand-blue/20 mb-6 text-center">
                             <div class="w-12 h-12 bg-brand-blue/10 flex items-center justify-center mb-3 text-brand-blue">
                                 <svg class="w-6 h-6 text-brand-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-1.605.42-3.113 1.157-4.418" />
                                 </svg>
                             </div>
                             <span class="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest bg-amber-100 text-amber-900 border border-amber-200 mb-2">
                                 <span class="w-1.5 h-1.5 bg-amber-600 animate-pulse"></span>
                                 In Progress
                             </span>
-                            <p class="text-xs uppercase tracking-widest font-extrabold text-brand-blue/70">Visual Assets &amp; Documentation In Production</p>
+                            <p class="text-xs uppercase tracking-widest font-extrabold text-brand-blue/70">Visual Assets &amp; Storefront In Production</p>
                         </div>
                     </template>
 
@@ -1420,16 +1416,54 @@
                             </span>
                         </template>
                     </div>
-                    <h3 id="dialog-title" class="font-serif text-3xl font-bold text-brand-blue text-center mb-3" x-text="activeModal?.title"></h3>
-                    <p id="dialog-desc" class="text-brand-blue/80 text-base text-center max-w-xl leading-relaxed mb-6 font-sans" x-text="activeModal?.desc"></p>
+                    <h3 id="dialog-title" class="font-serif text-3xl sm:text-4xl font-bold text-brand-blue text-center mb-3" x-text="activeModal?.title"></h3>
+                    <p id="dialog-desc" class="text-brand-blue/80 text-sm sm:text-base text-center max-w-2xl leading-relaxed mb-6 font-sans" x-text="activeModal?.desc"></p>
+
+                    <!-- 4-Part Case Study Breakdown -->
+                    <template x-if="activeModal?.problem">
+                        <div class="w-full text-left my-4 font-sans border-t border-b border-brand-blue/15 py-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                                <div class="bg-brand-blue/[0.04] p-4 sm:p-5 border-l-4 border-brand-blue flex flex-col justify-start">
+                                    <h4 class="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-brand-blue inline-block"></span>
+                                        <span>Problem / Goal</span>
+                                    </h4>
+                                    <p class="text-xs sm:text-sm text-brand-blue/90 leading-relaxed font-sans" x-text="activeModal?.problem"></p>
+                                </div>
+                                <div class="bg-brand-blue/[0.04] p-4 sm:p-5 border-l-4 border-brand-blue flex flex-col justify-start">
+                                    <h4 class="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-brand-blue inline-block"></span>
+                                        <span>What I Did &amp; Tools Used</span>
+                                    </h4>
+                                    <p class="text-xs sm:text-sm text-brand-blue/90 leading-relaxed font-sans" x-text="activeModal?.tools"></p>
+                                </div>
+                                <div class="bg-brand-blue/[0.04] p-4 sm:p-5 border-l-4 border-brand-blue flex flex-col justify-start">
+                                    <h4 class="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-brand-blue inline-block"></span>
+                                        <span>The Process</span>
+                                    </h4>
+                                    <p class="text-xs sm:text-sm text-brand-blue/90 leading-relaxed font-sans" x-text="activeModal?.process"></p>
+                                </div>
+                                <div class="bg-brand-blue/[0.04] p-4 sm:p-5 border-l-4 border-brand-blue flex flex-col justify-start">
+                                    <h4 class="text-[11px] font-extrabold uppercase tracking-widest text-brand-blue mb-2 flex items-center gap-2">
+                                        <span class="w-2 h-2 bg-brand-blue inline-block"></span>
+                                        <span>The Results</span>
+                                    </h4>
+                                    <p class="text-xs sm:text-sm text-brand-blue/90 leading-relaxed font-sans" x-text="activeModal?.results"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
 
                     <template x-if="activeModal?.link">
-                        <a :href="activeModal?.link" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-brand-blue text-cream text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors inline-flex items-center gap-2">
-                            <span x-text="activeModal?.linkText || 'Open Link'"></span> &rarr;
-                        </a>
+                        <div class="mt-4">
+                            <a :href="activeModal?.link" target="_blank" rel="noopener noreferrer" class="px-6 py-2.5 bg-brand-blue text-cream text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors inline-flex items-center gap-2">
+                                <span x-text="activeModal?.linkText || 'Open Link'"></span> &rarr;
+                            </a>
+                        </div>
                     </template>
                     <template x-if="!activeModal?.link && activeModal?.status">
-                        <div class="px-6 py-2.5 bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-2">
+                        <div class="mt-4 px-6 py-2.5 bg-amber-500/10 text-amber-900 border border-amber-500/20 text-xs font-bold uppercase tracking-widest inline-flex items-center gap-2">
                             <span class="w-2 h-2 bg-amber-600 animate-pulse"></span>
                             <span>Full Case Study Releasing Soon</span>
                         </div>
